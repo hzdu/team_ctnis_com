@@ -1,0 +1,15 @@
+*.php
+*.icloud
+*.xml
+wp-content/cache/
+wp-content/upgrade/
+wp-content/uploads/
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+*.htacces
+*.tar.gz
+*.zip
+*.rar
