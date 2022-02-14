@@ -3,9 +3,9 @@ Contributors: edge22
 Donate link: https://generatepress.com
 Tags: generatepress
 Requires at least: 5.2
-Tested up to: 5.8.1
+Tested up to: 5.9
 Requires PHP: 5.6
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,6 +26,12 @@ To learn how to install GP Premium, check out our documentation [here](https://d
 In most cases, #1 will work fine and is way easier.
 
 == Changelog ==
+
+= 2.1.2 =
+* Elements: Fix custom field value in dynamic container links
+* Elements: Fix block widths in the editor
+* General: Fix double slashes in dashboard file request
+* General: Fix missing Customizer translations
 
 = 2.1.1 =
 * Menu Plus: Fix mobile header sticky auto hide

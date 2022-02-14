@@ -4,8 +4,8 @@ Donate link: https://perfmatters.io
 Tags: perfmatters
 Requires at least: 4.7
 Requires PHP: 7.0
-Tested up to: 5.8.2
-Stable tag: 1.8.5
+Tested up to: 5.9
+Stable tag: 1.8.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,7 +34,23 @@ Check out our [documentation](https://perfmatters.io/docs/) for more information
 
 == Changelog ==
 
-= 1.8.5 - 01.19.2021 =
+= 1.8.6 - 02.10.2022 =
+* Added new option to Remove Global Styles related to duotone filters.
+* Added new perfmatters_script_manager_locale filter.
+* Added new perfmatters_disable_woocommerce_scripts filter.
+* Added new perfmatters_page_builders filter.
+* Added new perfmatters_delay_js_behavior filter.
+* Fixed an issue with the unused CSS parser that was incorrectly rewriting relative URLs if there was no query string present on the original stylesheet src.
+* Added additional parameter to page builders array for compatibility.
+* Fixed an issue that was causing the login URL disabled 404 behavior to result in an error if a 404 template was not found.
+* Added some additional checks before creating cache directories for local fonts and used CSS.
+* Fixed an issue that was causing the fade-in affect to conflict with child images inside a lazy loaded container.
+* Fixed an undefined index warning coming from unused CSS settings update function.
+* Added a default delay JS exclusion for admin only inline customize-support script.
+* Refactored entire meta.php code to be more efficient (38% smaller) and in line with current structure.
+* Translation updates.
+
+= 1.8.5 - 01.19.2022 =
 * Added new feature to Remove Unused CSS (BETA).
 * Added new perfmatters_remove_unused_css filter.
 * Adjusted CDN Rewrite buffer priority for better compatibility with other features.
