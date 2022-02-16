@@ -1,14 +1,14 @@
 *.php
 *.icloud
 *.xml
-wp-content/upgrade/
-wp-content/uploads/
+core/upgrade/
+core/storage/
 
 # ignore log files and databases
 *.log
 *.sql
 *.sqlite
-*.htacces
+*.htaccess
 *.tar.gz
 *.zip
 *.rar

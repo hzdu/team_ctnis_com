@@ -1,0 +1,99 @@
+# Translation of Plugins - Pinyin Slugs - Stable (latest release) in Chinese (China)
+# This file is distributed under the same license as the Plugins - Pinyin Slugs - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-06-30 10:10:56+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Plugins - Pinyin Slugs - Stable (latest release)\n"
+
+#. Author URI of the plugin
+msgid "https://so-wp.com"
+msgstr "https://so-wp.com"
+
+#. Plugin URI of the plugin
+msgid "https://so-wp.com/plugin/pinyin-slugs"
+msgstr "https://so-wp.com/plugin/pinyin-slugs"
+
+#. Plugin Name of the plugin
+msgid "Pinyin Slugs"
+msgstr "Pinyin Slugs"
+
+#. Author of the plugin
+#: admin/settings.php:107
+msgid "SO WP"
+msgstr "SO WP"
+
+#: so-pinyin-slugs.php:241
+msgid "Settings"
+msgstr "设置"
+
+#: admin/settings.php:110
+msgid "WordPress.org Profile"
+msgstr "WordPress.org Profile"
+
+#: admin/settings.php:108
+msgid "Github"
+msgstr "GitHub"
+
+#: admin/settings.php:106
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: admin/settings.php:109
+msgid "WP Tips"
+msgstr "WP技巧"
+
+#: admin/settings.php:98
+msgid "Hi, my name is Pieter Bos, I hope you like this plugin! Please check out any of my other plugins on <a href=\"%s\" title=\"SO WP Plugins\">SO WP Plugins</a>. You can find out more information about me via the following links:"
+msgstr "嗨，我叫Pieter Bos，希望您喜欢这个插件！ 请在<a href=\"%s\" title=\"SO WP 插件\">SO WP插件</a>上查看我的其他任何插件。 您可以通过以下链接找到有关我的更多信息："
+
+#: admin/settings.php:91
+msgid "About the Author"
+msgstr "关于作者"
+
+#. Translators: 1 is link to Github Repo
+#: admin/settings.php:82
+msgid "If you have an issue with this plugin or want to leave a feature request, please note that I give <a href=\"%s\" title=\"Support or Feature Requests via Github\">support via Github</a> only."
+msgstr "如果您对此插件有疑问或想要提出功能请求，请注意，我仅提供 <a href=\"%s\" title=\"Support or Feature Requests via Github\">通过Github的支持</a>。"
+
+#. Translators: 1 is link to WP Repo
+#: admin/settings.php:73
+msgid "If you have found this plugin at all useful, please give it a favourable rating in the <a href=\"%s\" title=\"Rate this plugin!\">WordPress Plugin Repository</a>."
+msgstr "如果您发现此插件非常有用，请在<a href=\"%s\" title=\"对该插件评级！\"> WordPress Plugin Repository</a>中给它一个好评。"
+
+#: admin/settings.php:62
+msgid "Save Settings"
+msgstr "保存设置"
+
+#: admin/settings.php:52
+msgid "By default the maximum slug length is set to 100 letters; anything over that limit will not be converted. If you want to change this limit, you can do that here."
+msgstr "默认情况下，最大别名长度设置为100个字母；超过该限制的任何内容都不会转换。如果要更改此限制，可以在此处进行。"
+
+#: admin/settings.php:47
+msgid "Slug Length"
+msgstr "别名长度"
+
+#: admin/settings.php:28
+msgid "In that case you might want to add 301 Permanent Redirects for those specific links to your .htaccess file."
+msgstr "在这种情况下，您可能想要为这些特定链接添加301永久重定向到.htaccess文件。"
+
+#: admin/settings.php:24
+msgid "Pinyin Slugs will only work for new slugs, not on existing slugs. You can choose to rewrite the slugs of existing permalinks manually."
+msgstr "Pinyin Slugs仅适用于新别名，不适用于现有别名。 您可以选择手动重写现有永久链接的别名。"
+
+#: admin/settings.php:20
+msgid "Pinyin Slugs automatically transforms Chinese character titles into pinyin slugs."
+msgstr "Pinyin Slugs会自动将汉字标题转换为拼音别名。"
+
+#: admin/settings.php:16
+msgid "Important Information"
+msgstr "重要信息"
+
+#: admin/settings.php:12
+msgid "Pinyin Slugs Settings"
+msgstr "Pinyin Slugs 设置"

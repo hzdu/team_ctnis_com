@@ -1,0 +1,192 @@
+:root {
+  --happyforms-color-progress-bar-primary: #e6e6e6;
+  --happyforms-color-progress-bar-primary-bg: #ffffff;
+  --happyforms-color-progress-bar-secondary: #000;
+  --happyforms-color-progress-bar-text-primary: #ababab;
+  --happyforms-color-progress-bar-text-secondary: #fff;
+  --happyforms-color-multistep-previous-background: #dfdfdf;
+  --happyforms-color-multistep-previous-background-hover: #cdcdcd;
+  --happyforms-color-multistep-previous-text: #000;
+  --happyforms-color-multistep-previous-text-hover: #000;
+}
+
+.happyforms-form-progress {
+  position: relative;
+  width: 100%;
+  margin: 0 -1%;
+  padding: 0 1%;
+}
+ul.happyforms-form-progress__steps {
+  list-style: none;
+  list-style-type: none !important;
+  margin: 30px 0 -30px !important;
+  padding: 20px 0 0 !important;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: none;
+}
+.happyforms-form-progress__track-item:last-child {
+  justify-self: flex-end;
+}
+li.happyforms-form-progress__step {
+  position: relative;
+  flex: auto;
+  height: 40px;
+  margin: 0 0 20px 0 !important;
+}
+li.happyforms-form-progress__step:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #e6e6e6;
+  background-color: var(--happyforms-color-progress-bar-primary);
+}
+.happyforms-form-progress__step:last-child {
+  flex-grow: 0;
+}
+.happyforms-form-progress__step-label {
+  position: relative;
+  top: -20px;
+  display: inline-flex;
+  align-items: center;
+  z-index: 5;
+  padding: 5px 15px;
+  border-radius: 6px;
+  border: 1px solid #e6e6e6;
+  border-color: var(--happyforms-color-progress-bar-primary);
+  color: #ABABAB;
+  color: var(--happyforms-color-progress-bar-text-primary);
+  background-color: #fff;
+  background-color: var(--happyforms-color-progress-bar-primary-bg);
+  text-shadow: none;
+  box-shadow: none;
+}
+.happyforms-styles.happyforms-form--part-border-radius-square .happyforms-form-progress__step-label {
+  border-radius: 0;
+}
+.happyforms-styles.happyforms-form--part-border-radius-pill .happyforms-form-progress__step-label {
+  border-radius: 25px;
+}
+.happyforms-form-progress__step.completed:after {
+  background-color: #37C460;
+  background-color: var(--happyforms-color-progress-bar-secondary);
+}
+.happyforms-form-progress__step.current .happyforms-form-progress__step-label,
+.happyforms-form-progress__step.completed .happyforms-form-progress__step-label {
+  border-color: #000;
+  border-color: var(--happyforms-color-progress-bar-secondary);
+  color: #fff;
+  color: var(--happyforms-color-progress-bar-text-secondary);
+  background-color: #000;
+  background-color: var(--happyforms-color-progress-bar-secondary);
+}
+.happyforms-form-progress__step-title {
+  display: inline-block;
+  max-width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.happyforms-form-progress__step-number {
+  margin-right: 3px;
+}
+.happyforms-form-progress__step-number,
+.happyforms-form-progress__step-fullstop {
+  display: none;
+}
+.happyforms-form--progress-bar-type-full .happyforms-form-progress__step-number,
+.happyforms-form--progress-bar-type-numbers-only .happyforms-form-progress__step-number {
+  display: inline-block;
+}
+.happyforms-form--progress-bar-type-numbers-only .happyforms-form-progress__step-title {
+  display: none;
+}
+.happyforms-form--progress-bar-type-full .happyforms-form-progress__step-fullstop {
+  display: inline-block;
+}
+.happyforms-step {
+  display: flex;
+  flex-flow: row wrap;
+}
+.happyforms-step,
+.happyforms-step-preview {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.happyforms-form--multistep .happyforms-part--submit {
+  padding-top: 0;
+}
+.happyforms-step-preview {
+  position: relative;
+  padding: 0 1%;
+}
+.happyforms-step-preview a.submit {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+.happyforms-form--hide-progress-bar .happyforms-form-progress {
+  display: none;
+}
+.happyforms-form--hide-progress-bar.progressed .happyforms-form-progress {
+  display: block;
+}
+@media (max-width: 800px) {
+  .happyforms-form-progress__step {
+    display: none;
+  }
+  .happyforms-form-progress__step:last-child {
+    flex-grow: 1;
+  }
+  .happyforms-form-progress__step.current {
+    display: block;
+  }
+  .happyforms-form-progress__step-label {
+    display: flex;
+    justify-content: center;
+  }
+  .happyforms-form-progress__step:after {
+    display: none !important;
+  }
+}
+.happyforms-part.happyforms-part--page_break {
+  flex: 0 0 100%;
+  margin: 0;
+  padding: 0 1%;
+}
+.happyforms-part.happyforms-part--page_break.page-break-preview {
+  margin-bottom: 20px;
+}
+.happyforms-styles button.submit.happyforms-previous-step {
+  outline: 0;
+  color: #000;
+  color: var(--happyforms-color-multistep-previous-text);
+  background-color: #dbdbdb;
+  background-color: var(--happyforms-color-multistep-previous-background);
+  background: #dbdbdb;
+  background: var(--happyforms-color-multistep-previous-background);
+}
+.happyforms-styles button.submit.happyforms-previous-step[disabled] {
+  cursor: default;
+}
+.happyforms-styles.happyforms-form--submit-button-fullwidth button.happyforms-previous-step {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .happyforms-styles .happyforms-part--submit {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+  .happyforms-styles .happyforms-part--submit > * {
+    margin-right: 0;
+    padding: 15px 25px !important;
+  }
+}
