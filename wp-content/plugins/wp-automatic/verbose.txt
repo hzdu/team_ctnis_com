@@ -1,0 +1,89 @@
+*   Trying 2.22.147.120:443...
+* TCP_NODELAY set
+* Connected to elcomercio.pe (2.22.147.120) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: CN=elcomercio.web.arc-cdn.net
+*  start date: Jan 26 20:28:29 2022 GMT
+*  expire date: Apr 26 20:28:28 2022 GMT
+*  subjectAltName: host "elcomercio.pe" matched cert's "elcomercio.pe"
+*  issuer: C=US; O=Let's Encrypt; CN=R3
+*  SSL certificate verify result: certificate has expired (10), continuing anyway.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7f8732880e00)
+> GET /tecnologia/e-sports/ghost-of-tsushima-y-ratchet-clank-bandas-sonoras-son-nominadas-a-los-ifmca-awards-noticia/ HTTP/2
+Host: elcomercio.pe
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36
+accept: */*
+referer: http://www.bing.com/
+
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+< HTTP/2 200 
+< content-type: text/html; charset=utf-8
+< server: openresty
+< etag: W/"1d407-Ks3Kc+w3HdRAzwlEJr+SEi7LmoI"
+< last-modified: Thu, 10 Feb 2022 16:57:19 GMT
+< x-akamai-transformed: 9 29907 0 pmb=mRUM,2
+< cache-control: private, max-age=60
+< expires: Thu, 10 Feb 2022 16:58:19 GMT
+< date: Thu, 10 Feb 2022 16:57:19 GMT
+< server-timing: cdn-cache; desc=REVALIDATE
+< server-timing: edge; dur=92
+< server-timing: origin; dur=416
+< content-security-policy: upgrade-insecure-requests
+< 
+* Connection #0 to host elcomercio.pe left intact
+* Found bundle for host elcomercio.pe: 0x7f87314eb2d0 [can multiplex]
+* Re-using existing connection! (#0) with host elcomercio.pe
+* Connected to elcomercio.pe (2.22.147.120) port 443 (#0)
+* Using Stream ID: 3 (easy handle 0x7f8732880e00)
+> GET /resizer/IE5DwAF5E5CbPDlmN284Mi1-7cs=/980x528/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/Z633E3MRYFGPRHDWPOLR65NCHE.png HTTP/2
+Host: elcomercio.pe
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36
+accept: */*
+referer: http://elcomercio.pe
+
+< HTTP/2 200 
+< etag: "a7084236d37f0ef2d5114744390a22afd8d73308"
+< last-modified: Wed, 09 Feb 2022 16:31:49 GMT
+< server: Akamai Image Manager
+< content-length: 76253
+< content-type: image/jpeg
+< cache-control: private, no-transform, max-age=31448125
+< expires: Thu, 09 Feb 2023 16:32:46 GMT
+< date: Thu, 10 Feb 2022 16:57:21 GMT
+< server-timing: cdn-cache; desc=HIT
+< server-timing: edge; dur=288
+< content-security-policy: upgrade-insecure-requests
+< 
+* 110 data bytes written
+* Connection #0 to host elcomercio.pe left intact
+*   Trying ::1:80...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 80 (#1)
+> GET /wordpress/wp-content/uploads/2022/02/Z633E3MRYFGPRHDWPOLR65NCHE.png HTTP/1.1
+Host: localhost
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36
+Accept: */*
+Referer: http://elcomercio.pe
+
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Date: Thu, 10 Feb 2022 16:57:22 GMT
+< Server: Apache/2.4.46 (Unix) OpenSSL/1.0.2u PHP/8.0.0 mod_wsgi/3.5 Python/2.7.13 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_perl/2.0.11 Perl/v5.30.1
+< Last-Modified: Thu, 10 Feb 2022 15:50:35 GMT
+< ETag: "129dd-5d7abe92d68c0"
+< Accept-Ranges: bytes
+< Content-Length: 76253
+< Content-Type: image/png
+< 
+* Connection #1 to host localhost left intact
