@@ -22,36 +22,39 @@ i.mce-i-happyforms-form-picker:before, i.mce-i-happyforms-form-picker:before {
   background-position: center;
 }
 
-.post-type-happyform .column-shortcode {
-  overflow: hidden;
+th.column-shortcode {
+  width: 185px;
+  max-width: 185px;
 }
 
-.happyforms-shortcode-col span {
-  display: block;
-  margin-bottom: .2em;
-  line-height: 1.5em;
+@media screen and (min-width: 1024px) {
+  th.column-shortcode {
+    width: 340px;
+    max-width: 340px;
+  }
 }
 
-.happyforms-shortcode-col input {
-  position: absolute;
-  left: -999px;
+td.column-shortcode input {
+  width: 135px;
+  float: left;
+  margin-right: 8px;
+  margin-bottom: 8px;
 }
 
-.happyforms-shortcode-col a.happyforms-shortcode-clipboard {
+.happyforms-shortcode-clipboard {
+  float: left;
+  display: flex;
+  align-items: center;
+  min-width: 185px;
+}
+
+.happyforms-shortcode-clipboard span {
+  color: #008a20;
+  margin-left: 8px;
+}
+
+.happyforms-shortcode-clipboard span.hidden {
   display: none;
-  font-size: 13px;
-  line-height: 1.5em;
-  padding: 2px 0 0;
-}
-
-.happyforms-shortcode-col span {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-tr.type-happyform:hover .happyforms-shortcode-col a.happyforms-shortcode-clipboard {
-  display: inline-block;
 }
 
 /**
@@ -220,4 +223,70 @@ p.happyforms-message-nav span.divider:last-child {
 
 .happyforms-block-placeholder__control-group select {
   height: 36px !important;
+}
+
+.happyforms-buttongroup {
+  display: flex;
+}
+
+.happyforms-buttongroup label,
+#happyforms-integrations-screen .widget-content .happyforms-buttongroup label {
+  display: inline-flex;
+}
+
+.happyforms-buttongroup label span {
+  box-shadow: inset 0 0 0 1px #8c8f94;
+  padding:  0 8px;
+  font-size:  14px;
+  line-height: 30px;
+}
+
+.happyforms-buttongroup label:first-child span{
+  border-radius:  4px 0 0 4px;
+}
+
+.happyforms-buttongroup label:last-child span{
+  border-radius:  0 4px 4px 0;
+}
+
+.happyforms-buttongroup label:nth-child(n+1) {
+  margin-left:  -1px;
+}
+
+.happyforms-buttongroup label input[type='radio'] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff;
+  margin: 0;
+  width: 0;
+  min-width: 0px;
+  height: 0;
+  border: 0;
+}
+
+
+.happyforms-buttongroup label span:hover {
+  color: var(--wp-admin-theme-color);
+}
+
+.happyforms-buttongroup input[type='radio']:checked + span {
+  white-space: nowrap;
+  background: var(--wp-admin-theme-color);
+  color: #fff;
+  text-decoration: none;
+  text-shadow: none;
+  outline: 1px solid transparent;
+}
+
+.happyforms-buttongroup input:focus + span {
+  box-shadow: inset 0 0 0 1px #fff,0 0 0 var(--wp-admin-border-width-focus) var(--wp-admin-theme-color);
+  outline: 3px solid transparent;
+  z-index: 999;
+}
+
+
+.happyforms-buttongroup input[type='radio']:checked + span:hover,
+.happyforms-buttongroup input:focus + span:hover {
+  background: var(--wp-admin-theme-color-darker-10);
 }

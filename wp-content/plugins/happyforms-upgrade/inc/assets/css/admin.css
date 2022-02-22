@@ -259,30 +259,44 @@ tr.happyforms-message-unread th.check-column input {
     display: none;
 }
 
-body.post-type-happyforms-message .row-actions .mark_read a,
-body.post-type-happyforms-message .row-actions .untrash a,
-body.post-type-happyforms-message .row-actions .mark_not_spam a {
+body.post-type-happyforms-message .row-actions .happyforms-mark_read a,
+body.post-type-happyforms-message .row-actions .happyforms-restore a,
+body.post-type-happyforms-message .row-actions .happyforms-mark_not_spam a {
     color: #007017;
 }
 
-body.post-type-happyforms-message .row-actions .mark_spam a,
+body.post-type-happyforms-message .row-actions .happyforms-mark_spam a,
+body.post-type-happyforms-message .row-actions .happyforms-trash a,
+body.post-type-happyforms-message .row-actions .happyforms-delete a,
 body.post-type-happyform .row-actions .archive a {
     color: #b32d2e;
 }
 
-body.post-type-happyforms-message .row-actions .mark_spam a:hover,
+body.post-type-happyforms-message .row-actions .happyforms-mark_spam a:hover,
 body.post-type-happyform .row-actions .archive a:hover {
     border: none;
     color: #b32d2e;
 }
 
-body.post-type-happyforms-message .row-actions .mark_unread a {
+body.post-type-happyforms-message .row-actions .happyforms-mark_unread a {
     color: #996800;
+}
+
+body.post-type-happyforms-message tr.happyforms-message-unread .row-actions .happyforms-mark_unread {
+    display: none;
+}
+
+body.post-type-happyforms-message tr:not(.happyforms-message-unread) .row-actions .happyforms-mark_read {
+    display: none;
 }
 
 body.post-type-happyforms-message .wp-list-table tbody th,
 body.post-type-happyforms-message .wp-list-table tbody td {
     box-shadow: inset 0 -1px 0 rgba(0,0,0,.1);
+}
+
+tr.happyforms-undo {
+    background-color: #f6f7f7;
 }
 
 body.post-type-happyforms-message.edit-php #wpbody-content {
@@ -634,6 +648,21 @@ body.post-type-happyforms-message #post-body .misc-pub-comment-status:before {
     padding: 6px 8px;
 }
 
+.happyforms-message-edit-field-scrollable_terms .scrollbox {
+    height:  120px;
+    overflow-y: scroll;
+    resize: auto;
+    max-width: 100%;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    padding: 6px 8px;
+    box-sizing: border-box;
+}
+
+.happyforms-message-edit-field-scrollable_terms .scrollbox p {
+    margin: 0px !important;
+}
+
 #happyforms-message-send-email .inside {
     padding: 0;
 }
@@ -949,4 +978,8 @@ button.hf-hide-pw .dashicons {
         pointer-events: none;
         z-index: -1;
     }
+}
+
+.post-type-happyforms-message .tmp-hidden {
+  display: none;
 }

@@ -19,7 +19,6 @@
 			this.$input.on( 'change', this.onCheckboxChange.bind( this ) );
 			this.$input.on( 'focus', this.onFocus.bind( this ) );
 
-			this.initTooltip();
 		},
 
 		onSelectAllChange: function() {

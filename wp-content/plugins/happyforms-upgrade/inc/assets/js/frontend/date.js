@@ -21,36 +21,6 @@
 			this.$spinnerUpArrow.on('mouseup mouseleave touchend', this.clearSpinnerInterval.bind(this));
 			this.$spinnerDownArrow.on('mousedown touchstart', this.onSpinnerDownClick.bind(this));
 			this.$spinnerDownArrow.on('mouseup mouseleave touchend', this.clearSpinnerInterval.bind(this));
-
-			this.initDropdowns();
-			this.initTooltip();
-		},
-
-		initDropdowns: function() {
-			var self = this;
-
-			$( '.happyforms-custom-select', this.$el ).each( function() {
-				var $part = $( this );
-				var $input = $( 'input[data-serialize]', $part );
-				var $visualInput = $( 'input[type=text]', $part );
-				var $select = $( '.happyforms-custom-select-dropdown', $part );
-				$selectPartWrapper = $part.parent();
-
-				$visualInput.happyFormsSelect( {
-					$input: $input,
-					$select: $select,
-					searchable: $visualInput.attr('data-searchable'),
-					required: self.required,
-				} );				
-
-				if ( $selectPartWrapper.hasClass( 'happyforms-part-date-input--months' ) ) {
-					$visualInput.on( 'input', self.lettersInputOnly.bind( self ) );
-
-				} else if ( $selectPartWrapper.hasClass( 'happyforms-part-date-input--days' ) || 
-					$selectPartWrapper.hasClass( 'happyforms-part-date-input--years' ) ) {
-					$visualInput.on( 'input', self.numberInputOnly.bind( self ) );
-				} 				
-			} );
 		},
 
 		clearSpinnerInterval: function() {
@@ -219,9 +189,14 @@
 			var serialized = $( 'input, select', this.$el ).map( function( i, input ) {
 				var $input = $( input );
 
+				var value = $input.val();
+				if ( null == value ) {
+					value = '';
+				}
+
 				return {
 					name: $input.attr( 'name' ),
-					value: $input.val(),
+					value: value,
 				}
 			} ).toArray();
 

@@ -865,6 +865,7 @@ body.adding-happyforms-parts #customize-preview iframe {
 }
 
 .customize-control .option-list li input,
+.customize-control .option-list li textarea,
 .customize-control .column-list li input,
 .customize-control .row-list li input {
   margin: 2px 0 5px;
@@ -1077,10 +1078,10 @@ ul.happyforms-parts-list li .happyforms-parts-list-item-title {
   position: relative;
 }
 
-
-ul.happyforms-parts-list li.happyforms-parts-list-item--dummy .happyforms-parts-list-item-title {
-  display: flex;
-  align-items: center;
+ul.happyforms-parts-list li.happyforms-parts-list-item--dummy .happyforms-parts-list-item-title h3,
+ul.happyforms-parts-list li.happyforms-parts-list-item--dummy .happyforms-parts-list-item-title span {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 ul.happyforms-parts-list li.happyforms-parts-list-item--dummy .happyforms-parts-list-item-title a {
@@ -1147,7 +1148,7 @@ ul.happyforms-parts-list li[data-part-type="country"] .happyforms-parts-list-ite
 }
 
 ul.happyforms-parts-list li[data-part-type="attachment_dummy"] .happyforms-parts-list-item-title:before {
-  background-image: url(../svg/icons/attachment.svg);
+  background-image: url(../svg/icons/file-upload.svg);
 }
 
 ul.happyforms-parts-list li[data-part-type="poll_dummy"] .happyforms-parts-list-item-title:before {
@@ -1163,29 +1164,15 @@ ul.happyforms-parts-list li[data-part-type="website_url_dummy"] .happyforms-part
 }
 
 ul.happyforms-parts-list li[data-part-type="table_dummy"] .happyforms-parts-list-item-title:before {
-  opacity: 0.5;
   background-image: url(../svg/icons/matrix.svg);
 }
 
 ul.happyforms-parts-list li[data-part-type="date_dummy"] .happyforms-parts-list-item-title:before {
-  opacity: 0.5;
   background-image: url(../svg/icons/date-time.svg);
 }
 
 ul.happyforms-parts-list li[data-part-type="address_dummy"] .happyforms-parts-list-item-title:before {
-  background-image: url(../svg/icons/website-link.svg);
-}
-
-ul.happyforms-parts-list li[data-part-type="table_dummy"] .happyforms-parts-list-item-title:before {
-  background-image: url(../svg/icons/table.svg);
-}
-
-ul.happyforms-parts-list li[data-part-type="date_dummy"] .happyforms-parts-list-item-title:before {
-  background-image: url(../svg/icons/date.svg);
-}
-
-ul.happyforms-parts-list li[data-part-type="address_dummy"] .happyforms-parts-list-item-title:before {
-  background-image: url(../svg/icons/country.svg);
+  background-image: url(../svg/icons/address.svg);
 }
 
 ul.happyforms-parts-list li[data-part-type="phone_dummy"] .happyforms-parts-list-item-title:before {
@@ -1197,7 +1184,7 @@ ul.happyforms-parts-list li[data-part-type="title_dummy"] .happyforms-parts-list
 }
 
 ul.happyforms-parts-list li[data-part-type="legal_dummy"] .happyforms-parts-list-item-title:before {
-  background-image: url(../svg/icons/legal.svg);
+  background-image: url(../svg/icons/consent-choice.svg);
 }
 
 ul.happyforms-parts-list li[data-part-type="rich_text_dummy"] .happyforms-parts-list-item-title:before {
@@ -1209,33 +1196,15 @@ ul.happyforms-parts-list li[data-part-type="scale_dummy"] .happyforms-parts-list
 }
 
 ul.happyforms-parts-list li[data-part-type="rank_order_dummy"] .happyforms-parts-list-item-title:before {
-  opacity: 0.5;
   background-image: url(../svg/icons/rank.svg);
 }
 
 ul.happyforms-parts-list li[data-part-type="likert_scale_dummy"] .happyforms-parts-list-item-title:before {
-  opacity: 0.5;
   background-image: url(../svg/icons/scale.svg);
 }
 
 ul.happyforms-parts-list li[data-part-type="rating_dummy"] .happyforms-parts-list-item-title:before {
-  background-image: url(../svg/icons/scale.svg);
-}
-
-ul.happyforms-parts-list li[data-part-type="rank_order_dummy"] .happyforms-parts-list-item-title:before {
-  background-image: url(../svg/icons/rank-order.svg);
-}
-
-ul.happyforms-parts-list li[data-part-type="likert_scale_dummy"] .happyforms-parts-list-item-title:before {
-  background-image: url(../svg/icons/number-scale.svg);
-}
-
-ul.happyforms-parts-list li[data-part-type="rating_dummy"] .happyforms-parts-list-item-title:before {
-  background-image: url(../svg/icons/rating.svg);
-}
-
-ul.happyforms-parts-list li[data-part-type="rating_dummy"] .happyforms-parts-list-item-title:before {
-  background-image: url(../svg/icons/rating.svg);
+  background-image: url(../svg/icons/rate.svg);
 }
 
 ul.happyforms-parts-list li[data-part-type="narrative_dummy"] .happyforms-parts-list-item-title:before {
@@ -1247,11 +1216,7 @@ ul.happyforms-parts-list li[data-part-type="placeholder_dummy"] .happyforms-part
 }
 
 ul.happyforms-parts-list li[data-part-type="optin_dummy"] .happyforms-parts-list-item-title:before {
-  background-image: url(../svg/icons/placeholder.svg);
-}
-
-ul.happyforms-parts-list li[data-part-type="optin_dummy"] .happyforms-parts-list-item-title:before {
-  background-image: url(../svg/icons/opt-in.svg);
+  background-image: url(../svg/icons/opt-in-choice.svg);
 }
 
 ul.happyforms-parts-list li[data-part-type="payments_dummy"] .happyforms-parts-list-item-title:before {
@@ -1267,16 +1232,17 @@ ul.happyforms-parts-list li[data-part-type="divider_dummy"] .happyforms-parts-li
 }
 
 ul.happyforms-parts-list li[data-part-type="layout_title_dummy"] .happyforms-parts-list-item-title:before {
-  background-image: url(../svg/icons/divider.svg);
-}
-
-ul.happyforms-parts-list li[data-part-type="layout_title_dummy"] .happyforms-parts-list-item-title:before {
-  background-image: url(../svg/icons/title.svg);
+  background-image: url(../svg/icons/heading.svg);
 }
 
 ul.happyforms-parts-list li[data-part-type="media_dummy"] .happyforms-parts-list-item-title:before {
   background-image: url(../svg/icons/media.svg);
 }
+
+ul.happyforms-parts-list li[data-part-type="scrollable_terms_dummy"] .happyforms-parts-list-item-title:before {
+  background-image: url(../svg/icons/scrollable-terms.svg);
+}
+
 
 ul.happyforms-parts-list .happyforms-parts-list-item-title {
   padding: 0 0 5px;
@@ -1484,7 +1450,8 @@ li.customize-control.happyforms-range-control select.happyforms-unit-switch {
   unicode-bidi: embed;
 }
 
-.happyforms-widget-content textarea[data-bind=description] {
+.happyforms-widget-content textarea[data-bind=description],
+.happyforms-widget-content textarea[data-option-attribute=description] {
   height: 90px;
 }
 
@@ -1741,4 +1708,93 @@ ul.happyforms-parts-list li[data-part-type="rich_text"] {
   display: none;
 }
 
+/**
+ *
+ * Rank field part
+ *
+ */
+ul.happyforms-parts-list li[data-part-type="rank_order"] {
+  display: none;
+}
 
+.happyforms-buttongroup-wrapper {
+  line-height: 1.5;
+}
+
+
+.happyforms-buttongroup {
+  display: flex;
+}
+
+.happyforms-buttongroup label {
+  display: inline-flex;
+}
+
+.happyforms-buttongroup label span {
+  box-shadow: inset 0 0 0 1px #8c8f94;
+  padding:  0 8px;
+  font-size:  14px;
+  line-height: 30px;
+}
+
+.happyforms-buttongroup label:first-child span{
+  border-radius:  4px 0 0 4px;
+}
+
+.happyforms-buttongroup label:last-child span{
+  border-radius:  0 4px 4px 0;
+}
+
+.happyforms-buttongroup label:nth-child(n+1) {
+  margin-left:  -1px;
+}
+
+.happyforms-buttongroup label input[type='radio'] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff;
+  margin: 0;
+  width: 0;
+  min-width: 0px;
+  height: 0;
+  border: 0;
+}
+
+
+.happyforms-buttongroup label span:hover {
+  color: var(--wp-admin-theme-color);
+}
+
+.happyforms-buttongroup input[type='radio']:checked + span {
+  white-space: nowrap;
+  background: var(--wp-admin-theme-color);
+  color: #fff;
+  text-decoration: none;
+  text-shadow: none;
+  outline: 1px solid transparent;
+}
+
+.happyforms-buttongroup input:focus + span {
+  box-shadow: inset 0 0 0 1px #fff,0 0 0 var(--wp-admin-border-width-focus) var(--wp-admin-theme-color);
+  outline: 3px solid transparent;
+  z-index: 999;
+}
+
+
+.happyforms-buttongroup input[type='radio']:checked + span:hover,
+.happyforms-buttongroup input:focus + span:hover {
+  background: var(--wp-admin-theme-color-darker-10);
+}
+
+.happyforms-buttongroup label[for]:after {
+  content: none !important;
+}
+
+.happyforms-buttongroup.happyforms-buttongroup-field_width {
+  margin-top: -1px;
+}
+
+.happyforms-widget-content textarea[data-option-attribute=description] {
+  margin-bottom: 5px;
+}

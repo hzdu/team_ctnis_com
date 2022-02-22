@@ -1,31 +1,31 @@
 ( function( $ ) {
-	$( document ).on( 'change', 'select[name*=services]', function( e ) {
-		var $select = $( e.target );
-		var value   = $select.val();
-		var $widget = $select.parents( '.inside' );
+	$( document ).on( 'change', 'input[name*=services]', function( e ) {
+		var $buttongroup = $( e.target );
+		var value   = $buttongroup.val();
+		var $widget = $buttongroup.parents( '.inside' );
 
 		if ( value ) {
-			var $selectedService = $( '#happyforms-service-'+ value, $widget );
+			var $selectedService = $( '#happyforms-service-' + value, $widget );
 
 			if ( $selectedService.length ) {
 				$( '.happyforms-service-integration', $widget ).hide();
-				$select.parents( '[data-active-service]' ).attr( 'data-active-service', value );
+				$buttongroup.parents( '[data-active-service]' ).attr( 'data-active-service', value );
 				$selectedService.show();
 			}
 		} else {
 			$( '.happyforms-service-integration', $widget ).hide();
 		}
 
-		$select.parents( 'form' ).trigger( 'happyforms.enable' );
+		$buttongroup.parents( 'form' ).trigger( 'happyforms.enable' );
 	} );
 
-	$( document ).on( 'change', 'select[name*="[mode]"]', function( e ) {
-		var $select = $( e.target );
-		var value   = $select.val();
+	$( document ).on( 'change', 'input[name*="[mode]"]', function( e ) {
+ 		var $buttongroup = $( e.target );
+ 		var value   = $buttongroup.val();
 
-		$select.parents( '[data-active-mode]' ).attr( 'data-active-mode', value );
+ 		$buttongroup.parents( '[data-active-mode]' ).attr( 'data-active-mode', value );
 
-	});
+	} );
 
 	$( document ).on( 'change', 'input[class=happyforms-service-toggle]', function( e ) {
 		var $checkbox  = $( e.target );

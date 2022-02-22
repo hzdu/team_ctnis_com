@@ -325,7 +325,7 @@
 
 		// Silence unwanted events
 		$( document.body ).on( 'click', 'button', handlers.silenceEvent );
-		$( document.body ).on( 'click', 'input[type=submit]', handlers.silenceEvent );
+		$( document.body ).on( 'click', 'button[type=submit]', handlers.silenceEvent );
 		$( '.happyforms-form' ).on( 'submit', handlers.silenceEvent );
 	}
 

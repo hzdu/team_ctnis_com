@@ -6,34 +6,10 @@
 		init: function() {
 			this.type = this.$el.data( 'happyforms-type' );
 			this.$input = $( 'input', this.$el );
-			this.$selectAllCheckbox = $( 'input.happyforms-select-all', this.$el );
-
-			if ( this.$selectAllCheckbox.length ) {
-				this.$input.on( 'change', this.onCheckboxChange.bind( this ) );
-				this.$selectAllCheckbox.on( 'change', this.onSelectAllChange.bind( this ) );
-			}
 
 			this.$input.on( 'change', this.triggerChange.bind( this ) );
 			this.$input.on( 'change', this.onCheckboxChange.bind( this ) );
 			this.$input.on( 'focus', this.onFocus.bind( this ) );
-
-			this.initTooltip();
-		},
-
-		onSelectAllChange: function() {
-			if ( this.$selectAllCheckbox.is( ':checked' ) ) {
-				this.$input.each( function( i, input ) {
-					if ( $(input).hasClass( 'happyforms-checkbox' ) ) {
-						$(input).prop( 'checked', true );
-					}
-				} );
-			} else {
-				this.$input.each( function( i, input ) {
-					if ( $(input).hasClass( 'happyforms-checkbox' ) ) {
-						$(input).prop( 'checked', false );
-					}
-				} );
-			}
 		},
 
 		onCheckboxChange: function( e ) {

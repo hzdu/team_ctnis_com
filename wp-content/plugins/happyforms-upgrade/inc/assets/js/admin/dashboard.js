@@ -131,23 +131,303 @@
 	}
 
 	var ActivityRowActions = function() {
-		this.$link = null;
+		this.removedRows = {};
 	}
 
 	ActivityRowActions.prototype.bind = function() {
-		this.$link = $( '.mark_not_spam a, .untrash a' );
-		this.$link.on( 'click', this.onClick.bind( this ) );
+		$( document ).on( 'click', '.happyforms-mark_spam a', this.onMarkSpamClick.bind( this ) );
+		$( document ).on( 'click', '.happyforms-mark_not_spam a', this.onMarkNotSpamClick.bind( this ) );
+		$( document ).on( 'click', '.happyforms-undo a', this.onUndoClick.bind( this ) );
+		$( document ).on( 'click', '.happyforms-mark_read a', this.onMarkReadClick.bind( this ) );
+		$( document ).on( 'click', '.happyforms-mark_unread a', this.onMarkUnreadClick.bind( this ) );
+		$( document ).on( 'click', '.happyforms-trash a', this.onTrashClick.bind( this ) );
+		$( document ).on( 'click', '.happyforms-restore a', this.onRestoreClick.bind( this ) );
+		$( document ).on( 'click', '.happyforms-delete a', this.onDeleteClick.bind( this ) );
 	}
 
-	ActivityRowActions.prototype.onClick = function( e ) {
+	ActivityRowActions.prototype.getRowTemplate = function( message, postId, undoUrl ) {
+		var id = postId ? `id="${postId}"` : ``;
+		var undoLink = (
+			undoUrl ?
+			`<a href="#" data-href="${undoUrl}" title="">${settings.messageAdminNotices.undo}</a>.` :
+			''
+		);
+
+		var template = `
+		<tr class="happyforms-undo" ${id}>
+			<td colspan="5">
+				<div class="undo">
+					<div class="spam-undo-inside">
+						${message}. ${undoLink}
+					</div>
+				</div>
+			</td>
+		</tr>
+		`;
+
+		return template;
+	}
+
+	ActivityRowActions.prototype.onMarkSpamClick = function( e ) {
 		e.preventDefault();
 		e.stopImmediatePropagation();
 
-		window.location = $( e.target ).attr( 'href' );
+		var $target = $( e.target );
+		var $tr = $target.parents( 'tr' );
+		var postId = $tr.attr( 'id' );
+		var url = new URL( $target.attr( 'data-href' ) );
+		var action = url.searchParams.get( 'action' );
+		var notice = settings.messageAdminNotices[action];
+		var undoUrl = $target.attr( 'data-undo' );
+		var self = this;
 
-		var $tr = $( e.target ).parents( 'tr' );
-		$tr.removeClass( 'happyforms-message-unread' );
-		happyForms.dashboard.animateTableRow( $tr, '#e7e7d3', 'rgba(249, 249, 249)' );
+		$.post( url, function( response ) {
+			self.updateCounters( response.data );
+		} );
+
+		$( 'th, td', $tr ).css( 'backgroundColor', '#faafaa' );
+
+		$tr.fadeOut( 350, function() {
+			var $html = $( self.getRowTemplate( notice, postId, undoUrl ) );
+
+			$html.hide();
+			$tr.before( $html );
+			self.removedRows[postId] = $tr.remove();
+			$html.fadeIn( 350 );
+		} );
+	}
+
+	ActivityRowActions.prototype.onMarkNotSpamClick = function( e ) {
+		e.preventDefault();
+		e.stopImmediatePropagation();
+
+		var $target = $( e.target );
+		var $tr = $target.parents( 'tr' );
+		var url = new URL( $target.attr( 'data-href' ) );
+		var self = this;
+
+		$.post( url, function( response ) {
+			self.updateCounters( response.data );
+		} );
+
+		$( 'th, td', $tr ).css( 'backgroundColor', 'rgb(102, 204, 102)' );
+
+		$tr.fadeOut( 350, function() {
+			var $tbody = $tr.parents( 'tbody' );
+			
+			$tr.remove();
+
+			if ( 0 === $tbody.children().length ) {
+				var $html = $( self.getRowTemplate( settings.messageAdminNotices.noActivity ) );
+
+				$tbody.append( $html );
+			}
+		} );
+	}
+
+	ActivityRowActions.prototype.onMarkReadClick = function( e ) {
+		e.preventDefault();
+		e.stopImmediatePropagation();
+
+		var $target = $( e.target );
+		var $tr = $target.parents( 'tr' );
+		var url = $target.attr( 'data-href' );
+		var currentUrl = new URL( window.location.href );
+		var statusFilter = currentUrl.searchParams.get( 'activity_status' );
+		var self = this;
+
+		$.post( url, function( response ) {
+			self.updateCounters( response.data );
+		} );
+
+		if ( 'unread' === statusFilter ) {
+			$tr.fadeOut( 350, function() {
+				var $tbody = $tr.parents( 'tbody' );
+				
+				$tr.remove();
+
+				if ( 0 === $tbody.children().length ) {
+					var $html = $( self.getRowTemplate( settings.messageAdminNotices.noActivity ) );
+
+					$tbody.append( $html );
+				}
+			} );
+		} else {
+			$( 'th, td', $tr ).animate( { 'backgroundColor': 'transparent' }, 350, function() {
+				$tr.removeClass( 'happyforms-message-unread' );
+			} );
+		}
+	}
+
+	ActivityRowActions.prototype.onMarkUnreadClick = function( e ) {
+		e.preventDefault();
+		e.stopImmediatePropagation();
+
+		var $target = $( e.target );
+		var $tr = $target.parents( 'tr' );
+		var url = $target.attr( 'data-href' );
+		var currentUrl = new URL( window.location.href );
+		var statusFilter = currentUrl.searchParams.get( 'activity_status' );
+		var self = this;
+
+		$.post( url, function( response ) {
+			self.updateCounters( response.data );
+		} );
+
+		if ( 'read' === statusFilter ) {
+			$tr.fadeOut( 350, function() {
+				var $tbody = $tr.parents( 'tbody' );
+				
+				$tr.remove();
+
+				if ( 0 === $tbody.children().length ) {
+					var $html = $( self.getRowTemplate( settings.messageAdminNotices.noActivity ) );
+
+					$tbody.append( $html );
+				}
+			} );
+		} else {
+			$( 'th, td', $tr ).animate( { 'backgroundColor': '#fcf9e8' }, 350, function() {
+				$tr.addClass( 'happyforms-message-unread' );
+			} );
+		}
+	}
+
+	ActivityRowActions.prototype.onTrashClick = function( e ) {
+		e.preventDefault();
+		e.stopImmediatePropagation();
+
+		var $target = $( e.target );
+		var $tr = $target.parents( 'tr' );
+		var postId = $tr.attr( 'id' );
+		var url = new URL( $target.attr( 'data-href' ) );
+		var action = url.searchParams.get( 'action' );
+		var notice = settings.messageAdminNotices[action];
+		var undoUrl = $target.attr( 'data-undo' );
+		var self = this;
+
+		$.post( url, function( response ) {
+			self.updateCounters( response.data );
+		} );
+
+		$( 'th, td', $tr ).css( 'backgroundColor', '#faafaa' );
+
+		$tr.fadeOut( 350, function() {
+			var $html = $( self.getRowTemplate( notice, postId, undoUrl ) );
+
+			$html.hide();
+			$tr.before( $html );
+			self.removedRows[postId] = $tr.remove();
+			$html.fadeIn( 350 );
+		} );
+	}
+
+	ActivityRowActions.prototype.onDeleteClick = function( e ) {
+		e.preventDefault();
+		e.stopImmediatePropagation();
+
+		var $target = $( e.target );
+		var $tr = $target.parents( 'tr' );
+		var url = new URL( $target.attr( 'data-href' ) );
+		var currentUrl = new URL( window.location.href );
+		var statusFilter = currentUrl.searchParams.get( 'post_status' );
+		var notice = ( 
+			'trash' === statusFilter ?
+			settings.messageAdminNotices.noActivityTrash :
+			settings.messageAdminNotices.noActivity
+		);
+
+		var self = this;
+
+		$.post( url, function( response ) {
+			self.updateCounters( response.data );
+		} );
+
+		$( 'th, td', $tr ).css( 'backgroundColor', '#faafaa' );
+
+		$tr.fadeOut( 350, function() {
+			var $tbody = $tr.parents( 'tbody' );
+				
+			$tr.remove();
+
+			if ( 0 === $tbody.children().length ) {
+				var $html = $( self.getRowTemplate( notice ) );
+
+				$tbody.append( $html );
+			}
+		} );
+	}
+
+	ActivityRowActions.prototype.onRestoreClick = function( e ) {
+		e.preventDefault();
+		e.stopImmediatePropagation();
+
+		var $target = $( e.target );
+		var $tr = $target.parents( 'tr' );
+		var url = new URL( $target.attr( 'data-href' ) );
+		var self = this;
+
+		$.post( url, function( response ) {
+			self.updateCounters( response.data );
+		} );
+
+		$( 'th, td', $tr ).css( 'backgroundColor', 'rgb(102, 204, 102)' );
+
+		$tr.fadeOut( 350, function() {
+			var $tbody = $tr.parents( 'tbody' );
+			
+			$tr.remove();
+
+			if ( 0 === $tbody.children().length ) {
+				var $html = $( self.getRowTemplate( settings.messageAdminNotices.noActivityTrash ) );
+
+				$tbody.append( $html );
+			}
+		} );
+	}
+
+	ActivityRowActions.prototype.onUndoClick = function( e ) {
+		e.preventDefault();
+		e.stopImmediatePropagation();
+
+		var $target = $( e.target );
+		var $tr = $target.parents( 'tr' );
+		var postId = $tr.attr( 'id' );
+		var url = new URL( $target.attr( 'data-href' ) );
+
+		var self = this;
+
+		$.post( url, function( response ) {
+			self.updateCounters( response.data );
+		} );
+
+		$( 'th, td', $tr ).css( 'backgroundColor', '#cceebb' );
+		
+		$tr.fadeOut( 350, function() {
+			var $originalRow = self.removedRows[postId];
+			
+			$tr.after( $originalRow );
+			$( 'th, td', $originalRow ).css( 'backgroundColor', '' );
+			$originalRow.fadeIn( 350 );
+			$tr.remove();
+		} );
+	}
+
+	ActivityRowActions.prototype.updateCounters = function( counters ) {
+		$( 'li.all span.count' ).text( `(${counters.total})` );
+		$( 'li.unread span.count' ).text( `(${counters.unread})` );
+		$( 'li.read span.count' ).text( `(${counters.read})` );
+		$( 'li.spam span.count' ).text( `(${counters.spam})` );
+		$( 'li.trash span.count' ).text( `(${counters.trash})` );
+
+		var $unreadBadge = $( '.happyforms-pending-count' );
+		
+		$unreadBadge.hide();
+
+		if ( counters.unread > 0 ) {
+			$( '.pending-count', $unreadBadge ).text( counters.unread );
+			$unreadBadge.show();
+		}
 	}
 
 	var FormTable = function() {

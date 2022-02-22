@@ -9,8 +9,6 @@
 
 			this.$input.on( 'change', this.triggerChange.bind( this ) );
 			this.$input.on( 'blur', this.onBlur.bind( this ) );
-
-			this.initTooltip();
 		},
 
 		isFilled: function() {

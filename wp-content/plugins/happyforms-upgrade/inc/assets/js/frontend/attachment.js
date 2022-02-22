@@ -18,7 +18,6 @@
 			this.$duplicateNotice = $( '.happyforms-file-notices .happyforms-part-error-notice[data-error-type=duplicate]', this.$el );
 			this.dragCounter = 0;
 
-			this.nonce = $( '[name="happyforms_message_nonce"]', this.$form ).val();
 			this.formId = $( '[name="happyforms_form_id"]', this.$form ).val();
 			this.partId = this.$el.attr( 'data-happyforms-part-id' );
 			this.maxFileSize = this.$el.attr( 'data-happyforms-max-file-size' ) + 'mb';
@@ -39,7 +38,6 @@
 			this.$uploadBox.on( 'dragleave', this.onDragLeave.bind(this) );
 			this.$fileList.on( 'click', 'a.happyforms-delete-attachment', this.onDeleteAttachment.bind( this ) );
 
-			this.initTooltip();
 			this.initUploader();
 		},
 
@@ -96,7 +94,6 @@
 					action: settings.fileUploadAction,
 					happyforms_form_id: this.formId,
 					happyforms_part_id: this.partId,
-					happyforms_message_nonce: this.nonce,
 				},
 				filters: filters,
 			} );

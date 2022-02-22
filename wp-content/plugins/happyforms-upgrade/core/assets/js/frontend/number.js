@@ -37,8 +37,6 @@
 					self.cleaveInstances.push( cleave );
 				} );
 			}
-
-			this.initTooltip();
 			this.onBlur();
 		},
 

@@ -22,9 +22,6 @@
 			this.listenTo( this.model, 'change:character_limit_mode', this.onCharacterLimitModeChange );
 			this.listenTo( this.model, 'change:characters_label', this.onLimitWordsCharactersLabelChange );
 			this.listenTo( this.model, 'change:words_label', this.onLimitWordsCharactersLabelChange );
-			this.listenTo( this.model, 'change:rows', this.onRowsChange );
-
-			this.listenTo( this.model, 'change:rich_text', this.onRichTextChange );
 		},
 
 		/**
@@ -133,47 +130,8 @@
 			};
 
 			happyForms.previewSend( 'happyforms-part-dom-update', data );
-		},
-		
-		onRichTextChange: function( model, value ) {
-			if ( 1 == value ) {
-				$( '.happyforms-placeholder-option', this.$el ).hide();
-			} else {
-				$( '.happyforms-placeholder-option', this.$el ).show();
-			}
-
-			model.fetchHtml( function( response ) {
-				var data = {
-					id: model.get( 'id' ),
-					html: response,
-				};
-
-				happyForms.previewSend( 'happyforms-form-part-refresh', data );
-			} );
-		},
-
-		onRowsChange: function( model, value ) {
-			if ( model.get( 'rich_text' ) ) {
-				model.fetchHtml( function( response ) {
-					var data = {
-						id: model.get( 'id' ),
-						html: response,
-					};
-
-					happyForms.previewSend( 'happyforms-form-part-refresh', data );
-				} );
-			} else {
-				var data = {
-					id: this.model.id,
-					callback: 'onMultiLineTextRowsChange',
-					options: {
-						value: value
-					}
-				};
-
-				happyForms.previewSend( 'happyforms-part-dom-update', data );
-			}
 		}
+
 	} );
 
 	happyForms.previewer = _.extend( happyForms.previewer, {
@@ -195,11 +153,12 @@
 
 			this.$( 'textarea', $part ).attr( 'rows', options.value );
 		},
+		
 		onCharacterLimitChange: function (id, html, options) {
 			var part = this.getPartModel(id);
 			var $part = this.getPartElement(html);
 
-			this.$('.happyforms-part__char-counter span.counter-limit', $part).html(part.get('character_limit'));
+			this.$( '.happyforms-part__char-counter span.counter-limit', $part ).html( part.get( 'character_limit' ) );
 		},
 	} );
 

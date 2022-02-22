@@ -244,51 +244,9 @@ __webpack_require__.r(__webpack_exports__);
 (function ($, settings) {
   /**
    *
-   * Review modal
-   *
-   */
-  const ReviewModal = props => {
-    const imageURL = `${settings.pluginURL}inc/assets/img/yeah.gif`;
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Guide"], {
-      onFinish: props.onRequestClose,
-      className: "happyforms-modal happyforms-modal--review",
-      pages: [{
-        image: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("picture", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
-          src: imageURL,
-          width: "450",
-          height: "276"
-        })),
-        content: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-          className: "happyforms-modal__header"
-        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Heck yeah! A milestone', 'happyforms'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-          className: "happyforms-modal__body"
-        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
-          dangerouslySetInnerHTML: {
-            __html: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["sprintf"])(Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('That’s <i>%d</i> replies you’ve got so far. Nicely done! Rock on.', 'happyforms'), props.activityCount)
-          }
-        }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('We wanna ask a favor. Kinda awkward, we know. But really. Could you please give us a five-star rating on WordPress?', 'happyforms')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("ul", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("li", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('79% of shoppers trust anonymous plugin reviews', 'happyforms')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("li", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('88% of customers read reviews before they picked us', 'happyforms')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("li", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('1% of users have ever bothered to leave us a review', 'happyforms'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('So whattaya say? Got two minutes to help us out?', 'happyforms'))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-          className: "happyforms-modal__footer"
-        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["BaseControl"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-          isPrimary: true,
-          href: "https://wordpress.org/support/plugin/happyforms/reviews/#new-post",
-          target: "_blank",
-          onClick: props.onRequestClose,
-          text: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Okay, you deserve it', 'happyforms')
-        }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-          isSecondary: true,
-          onClick: props.onRequestCloseAll,
-          text: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('I already did', 'happyforms')
-        }))))
-      }]
-    });
-  };
-  /**
-   *
    * Subscription modal
    *
    */
-
-
   const SubscribeModal = props => {
     const imageURL = `${settings.pluginURL}/inc/assets/img/subscribe.gif`;
     const initialState = {
@@ -492,15 +450,6 @@ __webpack_require__.r(__webpack_exports__);
   const DashboardModalsBaseClass = Object(_happyforms_core_jsx_src_admin_dashboard_modals__WEBPACK_IMPORTED_MODULE_1__["default"])($, settings);
 
   class DashboardModalsClass extends DashboardModalsBaseClass {
-    openReviewModal(activityCount) {
-      var modal = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ReviewModal, {
-        activityCount: activityCount,
-        onRequestClose: this.closeModal.bind(this, 'review-' + activityCount),
-        onRequestCloseAll: this.closeModal.bind(this, 'review')
-      });
-      this.openModal(modal);
-    }
-
     openSubscribeModal() {
       var modal = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SubscribeModal, {
         onRequestCloseAndRedirect: this.closeSubscribeModalAndRedirect.bind(this),

@@ -100,28 +100,17 @@
 		},
 
 		onDescriptionModeChange: function( model, value ) {
-			if ( 'tooltip' === value ) {
-				model.fetchHtml( function( response ) {
-					var data = {
-						id: model.get( 'id' ),
-						html: response,
-					};
+			var data = {
+				id: this.model.get( 'id' ),
+				callback: 'onSignatureDescriptionModeChange',
+			};
 
-					happyForms.previewSend( 'happyforms-form-part-refresh', data );
-				} );
-			} else {
-				var data = {
-					id: this.model.get( 'id' ),
-					callback: 'onSignatureDescriptionModeChange',
-				};
-
-				happyForms.previewSend( 'happyforms-part-dom-update', data );
-			}
+			happyForms.previewSend( 'happyforms-part-dom-update', data );
 		},
 
 		onSignatureTypeChange: function( model, value ) {
 			var $placeholderField = $( '.happyforms-placeholder-option', this.$el );
-			
+
 			if ( 'type' === value ) {
 				$placeholderField.show();
 			} else {

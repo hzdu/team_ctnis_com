@@ -11,8 +11,6 @@
 			this.$countryCode = $( 'input.happyforms-phone-code', this.$el );
 			this.$country = $( 'input.happyforms-phone-country', this.$el );
 			this.prefix = '';
-			this.$selectDropdown = null;
-			this.$selectInput = null;
 			this.$currentCode = $( '.happyforms-country-select__selected-country .happyforms-country-code span', this.$el );
 
 			this.$input.on( 'keyup', this.triggerChange.bind( this ) );
@@ -25,7 +23,6 @@
 				this.initCountryDropdown();
 			}
 
-			this.initTooltip();
 			this.onBlur();
 		},
 
@@ -68,57 +65,31 @@
 			var self = this;
 			var $input = $( '.happyforms-phone-code', this.$el );
 			var $visualInput = $( 'input[type="text"]', this.$el );
-			var $select = $( '.happyforms-custom-select-dropdown', this.$el );
-			var $countryTrigger = $( '.happyforms-country-select-trigger', this.$el );
+			var $select = $( 'select.happyforms-select', this.$el );
 
-			$countryTrigger.on( 'click', this.handleTrigger.bind( this ) );
-			$( window ).on( 'click', this.maybeCloseDropdown.bind( this ) );
-			$( document ).on( 'keydown', this.handleUpDownKey.bind( this ) );
-
-			$visualInput.happyFormsSelect( {
-				$input: $input,
-				$select: $select,
-				searchable: false,
-				required: this.required,
-			} );
-
-			$select.on( 'click', 'li', self.onItemSelect.bind( self ) );
-			this.$selectDropdown = $select;
-			this.$selectInput = $visualInput;
-		},
-
-		handleTrigger: function( e ) {
-			e.preventDefault();
+			$select.on( 'change', self.onItemSelect.bind( self ) );
 		},
 
 		onItemSelect: function( e ) {
 			var $li;
 			var $target = $(e.target);
 
-			if ( 'click' === e.type ) {
-				if ( ! $target.is('li') ) {
-					$li = $(e.target).parent('li');
-				} else {
-					$li = $target;
-				}
-			}
+			var $selected = $target.find( 'option:selected' );
 
-			if ( 'keyup' === e.type ) {
-				if ( 'Enter' !== e.key ) {
-					return false;
-				}
+			this.$countryCode.val( $selected.data( 'code' ) );
+			this.$country.val( $selected.data( 'country' ) );
 
-				$li = $(e.target);
-			}
+			$selectedText = '+' + $selected.data( 'code' );
+		 	$target.find( 'option:first' ).text( $selectedText ).prop( 'selected', true );
 
-			this.selectItem( $li );
-		},
+ 			var textLength = $selectedText.length;
+ 			var width = 65;
 
-		selectItem: function ( $li ) {
-			this.$countryCode.val($li.attr('data-code'));
-			this.$country.val($li.attr('data-country'));
+ 			if ( textLength > 2 ) {
+ 				width = ( $selectedText.length * 23 ) + 10;
+ 			}
 
-			this.$currentCode.text( '+' + $li.attr( 'data-code' ) );
+ 			$target.css( 'width', width + 'px' );
 
 			// re-init cleave
 			this.destroyCleave();
@@ -129,26 +100,17 @@
 			});
 
 			this.$phoneInput.trigger( 'focus' );
-
-			this.maybeCloseDropdown();
 		},
 
-		maybeCloseDropdown: function (e) {
-			this.$selectInput.trigger( 'blur' );
+		selectItem: function ( $li ) {
+			this.$countryCode.val($li.attr('data-code'));
+			this.$country.val($li.attr('data-country'));
+
+			this.$currentCode.text( '+' + $li.attr( 'data-code' ) );
+
+
 		},
 
-		handleUpDownKey: function (e) {
-			if ( this.$selectDropdown.is( ':visible' ) ) {
-				if( e.keyCode == 13 ){
-					var $li = $( 'li.active', this.$selectDropdown );
-
-					this.selectItem( $li );
-					e.preventDefault();
-				} else {
-					this.$selectInput.trigger( 'happyFormsSelect.submitted', e );
-				}
-			}
-		},
 
 		isFilled: function() {
 			var prefix = this.prefix;

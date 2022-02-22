@@ -27,6 +27,7 @@
 		defaults: {
 			is_default: false,
 			label: '',
+			description: '',
 		},
 	} );
 
@@ -62,6 +63,7 @@
 
 		onItemLimitSubmissionsChange: function( e ) {
 			var isChecked = $( e.target ).is( ':checked' );
+			var model = this.part;
 
 			if ( ! isChecked ) {
 				this.model.set( 'show_submissions_amount', 0 );
@@ -70,6 +72,16 @@
 
 			this.model.set( 'limit_submissions', isChecked ? 1 : 0 );
 			$( '.happyforms-part-item-limit-submission-settings', this.$el ).toggle();
+
+			this.part.fetchHtml( function( response ) {
+				var data = {
+					id: model.get( 'id' ),
+					html: response,
+				};
+
+				happyForms.previewSend( 'happyforms-form-part-refresh', data );
+
+			} );
 		},
 
 		onChangeShowSubmissions: function( e ) {
@@ -91,7 +103,7 @@
 
 			var model = this.part;
 
-			if ( 1 != this.model.get('show_submissions_amount') ) {
+			if ( 1 != this.model.get('limit_submissions') ) {
 				return;
 			}
 
@@ -167,15 +179,28 @@
 			this.model.set( 'description', $( e.target ).val() );
 			this.part.trigger( 'change' );
 
-			var data = {
-				id: this.part.get( 'id' ),
-				callback: 'onCheckboxItemDescriptionChangeCallback',
-				options: {
-					itemID: this.model.get( 'id' ),
-				}
-			};
+			if ( '' == this.model.previousAttributes().description || '' ==  this.model.get( 'description' ) ) {
+				var self = this;
+				this.part.fetchHtml( function( response ) {
+					var data = {
+						id: self.part.get( 'id' ),
+						html: response,
+					};
 
-			happyForms.previewSend( 'happyforms-part-dom-update', data );
+					happyForms.previewSend( 'happyforms-form-part-refresh', data );
+				} );
+			} else {
+
+				var data = {
+					id: this.part.get( 'id' ),
+					callback: 'onCheckboxItemDescriptionChangeCallback',
+					options: {
+						itemID: this.model.get( 'id' ),
+					}
+				};
+
+				happyForms.previewSend( 'happyforms-part-dom-update', data );
+			}
 		},
 
 		onItemDefaultChange: function( e ) {
@@ -212,7 +237,7 @@
 			'click .import-option': 'onImportOptionClick',
 			'click .import-options': 'onImportOptionsClick',
 			'click .add-options': 'onAddOptionsClick',
-			'change [name=display_type]': 'onDisplayTypeChange',
+			'change [data-bind=display_type]': 'onDisplayTypeChange',
 			'keyup [name=label]': 'onEnterKey',
 			'keyup [name=description]': 'onEnterKey',
 
@@ -234,8 +259,6 @@
 			this.listenTo( this.optionViews, 'reset', this.onOptionViewsSorted );
 			this.listenTo( this, 'sort-stop', this.onOptionSortStop );
 			this.listenTo( this, 'ready', this.onReady );
-			this.listenTo( this.model, 'change:show_select_all', this.onSelectAllChange );
-			this.listenTo( this.model, 'change:select_all_label', this.onSelectAllLabelChange );
 
 			this.listenTo( this.model, 'change:other_option', this.onAddOtherOption );
 			this.listenTo( this.model, 'change:other_option_label', this.onOtherOptionLabelChange );
@@ -398,13 +421,6 @@
 
 			this.model.set( attribute, $input.val() );
 
-			$( '.part-options-width-setting select option', this.$el ).hide();
-
-			var $supportedOptions = $( '.part-options-width-setting select option.display-type--' + value, this.$el );
-			$supportedOptions.show();
-
-			$( '.part-options-width-setting select' ).val( 'auto' ).trigger( 'change' );
-
 			var data = {
 				id: this.model.get( 'id' ),
 				callback: 'onCheckboxDisplayTypeChangeCallback',
@@ -471,34 +487,6 @@
 
 			$textarea.val( '' );
 			$( '.add-options', this.$el ).trigger( 'click' );
-		},
-
-		onSelectAllChange: function( model, value ) {
-			var $selectAllOptions = $( '.happyforms-nested-settings[data-trigger="show_select_all"]', this.$el );
-
-			if ( 1 == value ) {
-				$selectAllOptions.show();
-			} else {
-				$selectAllOptions.hide();
-			}
-
-			this.model.fetchHtml( function( response ) {
-				var data = {
-					id: model.get( 'id' ),
-					html: response,
-				};
-
-				happyForms.previewSend( 'happyforms-form-part-refresh', data );
-			} );
-		},
-
-		onSelectAllLabelChange: function( model, value ) {
-			var data = {
-				id: this.model.get( 'id' ),
-				callback: 'onCheckboxSelectAllLabelChangeCallback'
-			};
-
-			happyForms.previewSend( 'happyforms-part-dom-update', data );
 		},
 
 		onAddOtherOption: function( model, value ) {
@@ -610,13 +598,6 @@
 			var $option = $( '#' + options.itemID, $part );
 
 			$option.remove();
-		},
-
-		onCheckboxSelectAllLabelChangeCallback: function( id, html, options ) {
-			var part = this.getPartModel( id );
-			var $part = this.getPartElement( html );
-
-			this.$( '.happyforms-part-option--select-all .label', $part ).text( part.get( 'select_all_label' ) );
 		},
 
 		onCheckboxOtherOptionLabelChangeCallback: function( id, html, options ) {

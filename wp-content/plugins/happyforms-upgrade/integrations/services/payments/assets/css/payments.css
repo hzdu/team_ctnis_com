@@ -1,8 +1,9 @@
-.happyforms-part--payments .happyforms-part__label {
-  margin-bottom: 10px;
-}
 .happyforms-payments__payment-method-choice {
   margin-bottom: 0;
+}
+.happyforms-styles .happyforms-form__part.happyforms-payments__price {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .happyforms-styles .happyforms-payments__price .label {
   font-size: 16px;
@@ -14,6 +15,7 @@
 .happyforms-part--payments .happyforms-part {
   padding-left: 0;
   padding-right: 0;
+  margin-bottom: 0;
 }
 .happyforms-part--payments .happyforms-part[data-subpart=payment_method] {
   margin-bottom: 0;
@@ -26,7 +28,6 @@
 }
 .happyforms-payments-service--stripe {
   margin-top: 5px;
-  padding: 0 1%;
   flex-flow: row wrap;
   justify-content: space-between;
 }
@@ -39,7 +40,10 @@
   font-size: var(--happyforms-part-description-font-size);
 }
 .happyforms-part--payments .happyforms-part-error-notice {
-  margin-top: 0;
+  margin-top: 5px;
+}
+.happyforms-part--payments:not(.happyforms-part__validation-failed) .happyforms-part-error-notice {
+  display: none;
 }
 .happyforms-payments-service {
   display: none;
@@ -54,10 +58,6 @@
   border-width: 1px;
   border-style: solid;
   border-color: #000;
-}
-.happyforms-payments__stripe-el {
-  margin-left: -1%;
-  margin-right: -1%;
 }
 .happyforms-styles .happyforms-part--payments .stripe-element {
   padding: 13px 10px;

@@ -12,8 +12,6 @@
 			this.$input.on( 'change', this.triggerChange.bind( this ) );
 			this.$input.on( 'focus', this.onInputFocus.bind( this ) );
 			this.$visualInput.on( 'blur', this.onBlur.bind( this ) );
-
-			this.initTooltip();
 		}
 	};
 

@@ -12,8 +12,6 @@
 			this.$input.on( 'change', this.triggerChange.bind( this ) );
 			this.$input.on( 'change', this.onRadioChange.bind( this ) );
 			this.$input.on( 'focus', this.onFocus.bind( this ) );
-
-			this.initTooltip();
 		},
 
 		onRadioChange: function( e ) {

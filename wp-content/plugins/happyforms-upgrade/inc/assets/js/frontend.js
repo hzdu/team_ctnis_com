@@ -11,7 +11,6 @@
 			this.$input.on( 'blur', this.onBlur.bind( this ) );
 			this.$input.on( 'focus', this.onInputFocus.bind( this ) );
 
-			this.initTooltip();
 			this.onBlur();
 		},
 
@@ -101,63 +100,6 @@
 			return valid;
 		},
 
-		initTooltip: function() {
-			if ( ! $.fn.tooltip ) {
-				return;
-			}
-
-			var $form = this.$el.closest( 'form' );
-			var formStyles = getComputedStyle( $form[0] );
-
-			var descriptionProperties = [
-				'--happyforms-color-part-description',
-				'--happyforms-color-part-background',
-				'--happyforms-part-description-font-size',
-				'--happyforms-color-part-border',
-				'font-family',
-				'letter-spacing',
-			];
-
-			$( '.happyforms-tooltip__trigger', this.$el ).on( 'click', function( e ) {
-				e.preventDefault();
-			} );
-
-			$( '.happyforms-tooltip__trigger', this.$el ).tooltip( {
-				tooltipClass: 'happyforms-tooltip-ui',
-				position: {
-					my: 'bottom',
-					at: 'center top',
-				},
-				open: function( event, ui ) {
-					if ( ! event.srcElement ) {
-						return;
-					}
-
-					var originalHeight = ui.tooltip.height();
-
-					descriptionProperties.forEach( function( variable ) {
-						var value = formStyles.getPropertyValue( variable );
-						ui.tooltip[0].style.setProperty( variable, value );
-					} );
-
-					var newHeight = ui.tooltip.height();
-					var heightDifference;
-
-					if ( originalHeight > newHeight ) {
-						heightDifference = originalHeight - newHeight;
-						ui.tooltip.css( 'top', '+=' + heightDifference );
-					} else {
-						heightDifference = newHeight - originalHeight;
-						ui.tooltip.css( 'top', '-=' + heightDifference );
-					}
-
-					if ( $( event.srcElement ).offset().top < ui.tooltip.offset().top ) {
-						ui.tooltip.addClass( 'happyforms-tooltip-ui--bottom' );
-					}
-				},
-			} );
-		},
-
 		destroy: function() {
 			var $parts = $( '[data-happyforms-type]', this.$form );
 
@@ -231,7 +173,6 @@
 		serialize: function( submitEl ) {
 			var action = $( '[name=action]', this.$form ).val();
 			var form_id = $( '[name=happyforms_form_id]', this.$form ).val();
-			var nonce = $( '[name=happyforms_message_nonce]', this.$form ).val();
 			var referer = $( '[name=_wp_http_referer]', this.$form ).val();
 			var step = this.$step.val();
 
@@ -239,7 +180,6 @@
 				{ name: 'action', value: action },
 				{ name: 'happyforms_form_id', value: form_id },
 				{ name: 'happyforms_step', value: step },
-				{ name: 'happyforms_message_nonce', value: nonce },
 				{ name: 'referer', value: referer },
 			];
 
@@ -337,10 +277,11 @@
 
 				this.detach();
 
-				var $form = $( 'form', $el );
-				$( 'form', this.$el ).replaceWith( $form );
-
+				this.$el.replaceWith( $el );
+				this.$el = $el;
 				this.$el.happyForm();
+
+				var $form = $( 'form', this.$el );
 
 				// User filterable
 				if ( $form.attr( 'data-happyforms-scroll-disabled' ) ) {

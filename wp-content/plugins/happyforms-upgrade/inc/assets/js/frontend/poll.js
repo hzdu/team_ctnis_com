@@ -17,8 +17,6 @@
 			// other option
 			this.$input.on( 'change', this.onPollOptionChange.bind( this ) );
 			this.$input.on( 'focus', this.onFocus.bind( this ) );
-
-			this.initTooltip();
 		},
 
 		onPollOptionChange: function( e ) {

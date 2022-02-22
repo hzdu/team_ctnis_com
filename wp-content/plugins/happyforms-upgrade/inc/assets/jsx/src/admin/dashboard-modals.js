@@ -7,64 +7,6 @@ import { __, sprintf } from '@wordpress/i18n';
 
 	/**
 	 *
-	 * Review modal
-	 *
-	 */
-	const ReviewModal = ( props ) => {
-		const imageURL = `${settings.pluginURL}inc/assets/img/yeah.gif`;
-		
-		return(
-			<Guide
-				onFinish={ props.onRequestClose }
-				className="happyforms-modal happyforms-modal--review"
-				pages={ [
-					{
-						image: (
-							<picture>
-								<img src={imageURL} width="450" height="276" />
-							</picture>
-						),
-						content: (
-							<>
-							<div className="happyforms-modal__header">
-								<h1>{ __( 'Heck yeah! A milestone', 'happyforms' ) }</h1>
-							</div>
-							<div className="happyforms-modal__body">
-								<p dangerouslySetInnerHTML={{ __html: sprintf( __( 'That’s <i>%d</i> replies you’ve got so far. Nicely done! Rock on.', 'happyforms' ), props.activityCount ) }} />
-								<p>{ __( 'We wanna ask a favor. Kinda awkward, we know. But really. Could you please give us a five-star rating on WordPress?', 'happyforms' ) }</p>
-								<ul>
-									<li>{ __( '79% of shoppers trust anonymous plugin reviews', 'happyforms' ) }</li>
-									<li>{ __( '88% of customers read reviews before they picked us', 'happyforms' ) }</li>
-									<li>{ __( '1% of users have ever bothered to leave us a review', 'happyforms' ) }</li>
-								</ul>
-								<p>{ __( 'So whattaya say? Got two minutes to help us out?', 'happyforms' ) }</p>
-							</div>
-							<div className="happyforms-modal__footer">
-								<BaseControl>
-									<Button 
-										isPrimary={true} 
-										href="https://wordpress.org/support/plugin/happyforms/reviews/#new-post" 
-										target="_blank" 
-										onClick={ props.onRequestClose } 
-										text={ __( 'Okay, you deserve it', 'happyforms' ) }>
-									</Button>
-									<Button 
-										isSecondary={true} 
-										onClick={ props.onRequestCloseAll } 
-										text={ __( 'I already did', 'happyforms' ) }>
-									</Button>
-								</BaseControl>
-							</div>
-							</>
-						),
-					},
-				] }
-			/>
-		);
-	}
-
-	/**
-	 *
 	 * Subscription modal
 	 *
 	 */
@@ -279,17 +221,6 @@ import { __, sprintf } from '@wordpress/i18n';
 	const DashboardModalsBaseClass = DashboardModals( $, settings );
 	
 	class DashboardModalsClass extends DashboardModalsBaseClass {
-
-		openReviewModal( activityCount ) {
-			var modal = (
-				<ReviewModal 
-					activityCount={ activityCount }
-					onRequestClose={ this.closeModal.bind( this, 'review-' + activityCount ) }
-					onRequestCloseAll={ this.closeModal.bind( this, 'review' ) } />
-			);
-
-			this.openModal( modal );
-		}
 
 		openSubscribeModal() {
 			var modal = (

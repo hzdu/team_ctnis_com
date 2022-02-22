@@ -16,8 +16,6 @@
 			} else {
 				this.initSingleSlider();
 			}
-
-			this.initTooltip();
 		},
 
 		initSingleSlider: function() {

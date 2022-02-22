@@ -14,7 +14,7 @@
 
 	happyForms.classes.views.parts.page_break = happyForms.classes.views.Part.extend( {
 		template: '#customize-happyforms-page-break-template',
-		
+
 		initialize: function() {
 			happyForms.classes.views.Part.prototype.initialize.apply(this, arguments);
 
@@ -48,7 +48,7 @@
 
 			var data = {
 				id: model.id,
-				partialSelector: '[data-partial-id=form-progress-bar]',
+				partialSelector: '[data-partial-id=form-steps-progress]',
 				callback: 'updatePageBreakProgressBarCallback'
 			};
 
@@ -58,7 +58,7 @@
 		onCSSClassChange: function( model, value, options ) {
 			var data = {
 				id: model.id,
-				partialSelector: '[data-partial-id=form-progress-bar]',
+				partialSelector: '[data-partial-id=form-steps-progress]',
 				callback: 'onPageBreakCSSClassChangeCallback',
 			};
 
@@ -71,7 +71,7 @@
 			if ( 'page_break' === type ) {
 				happyForms.progressBar.removeStep();
 			}
-			
+
 			var pageBreakModels = collection.where( { type: 'page_break' } );
 
 			if ( 1 === pageBreakModels.length ) {
@@ -88,7 +88,7 @@
 		onPageBreakLabelChangeCallback: function( id, html ) {
 			var part = happyForms.form.get( 'parts' ).get( id );
 			var $part = this.$( html );
-			var $label = this.$( '.step-title', $part );
+			var $label = this.$( '.happyforms-page-break .label', $part );
 
 			$label.text( part.get( 'label' ) );
 		},

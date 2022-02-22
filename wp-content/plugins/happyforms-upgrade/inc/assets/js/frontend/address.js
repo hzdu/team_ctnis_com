@@ -33,7 +33,6 @@
 				});
 			}
 
-			this.initTooltip();
 			this.onBlur();
 			this.$el.trigger( 'happyforms-part-address-init' );
 		},

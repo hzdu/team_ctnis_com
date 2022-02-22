@@ -81,11 +81,6 @@ a.happyforms-ask-link.customize-unpreviewable {
   display: none !important;
 }
 
-.happyforms-part--focus-reveal-description input:focus + .happyforms-part__tooltip + .happyforms-part__description,
-.happyforms-part--focus-reveal-description textarea:focus + .happyforms-part__tooltip + .happyforms-part__description {
-  display: block;
-}
-
 .preview-hidden {
   display: none !important;
 }

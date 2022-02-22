@@ -60,6 +60,10 @@
     display: none;
 }
 
+.happyforms-integrations-widget .mode-group {
+     margin: 0 0 1em;
+}
+
 #happyforms-integrations-widget-recaptcha .has-service-selection[data-active-service="recaptcha"] #happyforms-service-recaptcha,
 #happyforms-integrations-widget-recaptcha .has-service-selection[data-active-service="recaptchav3"] #happyforms-service-recaptchav3 {
     display: block;

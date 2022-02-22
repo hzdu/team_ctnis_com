@@ -3,9 +3,9 @@
 Contributors: thethemefoundry
 Tags: contact form, contact form plugin, forms, form builder, custom form, intake form, registration form, survey form, quiz form, payment form, newsletter form, giveaway form, fundraising form, donation form, nomination form, order form, questionnaire form, onboarding form, contract form, estimate form, research form, qualitative form, quantitative form, membership form, mobile form, feedback form, release form, inquiry form, request form, evaluation form, RSVP form, reservation form, sales lead form, popup form, quote form, event form, booking form, application form, agreement form, safety form, compliance form, assessment form, sponsorship form, report form, file upload form, satisfaction form
 Requires at least: 5.0
-Tested up to: 5.8
+Tested up to: 5.9
 Requires PHP: 7.0
-Stable tag: 1.25.13
+Stable tag: 1.26.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,41 @@ https://www.youtube.com/watch?v=X1snk2vJbXI
 * Unlimited personal and client use plans.
 
 == Changelog ==
+
+= 1.26.3 =
+* Bugfix: Dropdown field was misbehaving when involved in conditional logic.
+
+= 1.26.2 =
+* New feature: "Hint" control for adding descriptive text to Radio and Checkbox field choices.
+* Improvement: Nicer vertical alignment of choices spanning multiple lines in Radio and Checkbox fields.
+* Improvement: "Align choices" control is now a button group for better usability.
+* Improvement: Exhausted choices are now always tagged with "(0 remaining)" to avoid confusion.
+* Improvement: All instances of "submit" type inputs have been replaced with buttons for easier styling.
+* Improvement: All custom form dropdowns have been replaced with their native counterparts for better performance and accessibility.
+* Removal: Rank field has been deprecated, since its functionality is better covered by a combination of other fields.
+* Removal: Built-in PDF generation was limited and has been deprecated in favor of dedicated services.
+* Removal: "Store replies and attachments in database" control caused issues with other, more important features and has been deprecated.
+
+= 1.26.1 =
+* Improvement: Nonce checks have been removed for improved compatibility with cache plugins.
+* Removal: "Tooltip" styling for field hints has been deprecated to improve usability of forms.
+* Removal: "Add 'select all' choice" was redundant and has been deprecated.
+* Removal: Long Text field's more lightweight with "Add rich text editor toolbar" deprecation.
+* Bugfix: Form width was rendered incorrectly on specific PHP versions.
+* Bugfix: Payment field form notices weren't working correctly.
+
+= 1.26.0 =
+* New feature: New "Scrollable Terms" field.
+* Improvement: Multi-page forms have been overhauled for better usability.
+* Removal: Long Text field "Rows" behaved inconsistently and has been removed.
+* Removal: "Add other choice" control has been deprecated in favor of conditional logic.
+* Removal: "Consent Choice" field was redundant and has been deprecated.
+
+= 1.25.14 =
+* Improvement: Miscellaneous improvements to Forms screen.
+* Improvement: New filter allows finer control of assets loading.
+* Improvement: Ajax handling of actions in Activity screen.
+* Bugfix: A back-compat routine was preventing submissions on specific form configurations.
 
 = 1.25.13 =
 * Bugfix: Signatures were being cropped incorrectly.
@@ -877,6 +912,21 @@ https://www.youtube.com/watch?v=X1snk2vJbXI
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.26.3 =
+* Conditional logic bugfixes.
+
+= 1.26.2 =
+* Radio and Checkbox fields choice hints, true submit buttons, layout and usability improvements.
+
+= 1.26.1 =
+* Improved cache compatibility, feature deprecations, minor bugfixes.
+
+= 1.26.0 =
+* New "Scrollable Terms" field, multi-page forms improvements.
+
+= 1.25.14 =
+* Miscellaneous improvements.
 
 = 1.25.13 =
 * Signature field bugfixes.

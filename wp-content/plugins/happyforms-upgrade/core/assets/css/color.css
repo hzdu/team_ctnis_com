@@ -95,7 +95,8 @@
 .happyforms-styles .happyforms-part input[type=tel],
 .happyforms-styles .happyforms-part input[type=number],
 .happyforms-styles .happyforms-part input[type=range],
-.happyforms-styles .happyforms-part textarea {
+.happyforms-styles .happyforms-part textarea,
+.happyforms-styles .happyforms-part select.happyforms-select {
   margin: 0;
   padding: 10px;
   border-width: 1px;
@@ -143,7 +144,8 @@
 .happyforms-styles .happyforms-part input[type=email]:focus,
 .happyforms-styles .happyforms-part input[type=tel]:focus,
 .happyforms-styles .happyforms-part input[type=number]:focus,
-.happyforms-styles .happyforms-part textarea:focus {
+.happyforms-styles .happyforms-part textarea:focus,
+.happyforms-styles .happyforms-part select.happyforms-select:focus {
   outline: 0;
   border-color: #7aa4ff !important;
   border-color: var(--happyforms-color-part-border-focus) !important;
@@ -225,7 +227,8 @@
 
 .happyforms-styles .happyforms-part .option-label {
   border-radius: 6px;
-  line-height: 1;
+  line-height: 1.3125;
+  line-height: calc(var(--happyforms-part-value-font-size) * 1.3125);
   font-size: 16px;
   font-size: var(--happyforms-part-value-font-size);
   overflow-wrap: anywhere;
@@ -255,8 +258,14 @@
   top: 3px;
 }
 
-.happyforms-styles .happyforms-part .option-label {
+.happyforms-styles .happyforms-part--radio .happyforms-part-option,
+.happyforms-styles .happyforms-part--checkbox .happyforms-part-option {
   margin-bottom: 10px;
+}
+
+.happyforms-styles .happyforms-part--radio label.option-label,
+.happyforms-styles .happyforms-part--checkbox label.option-label {
+  margin-bottom: 0px;
 }
 
 .happyforms-styles .happyforms-part .option-label .label,
@@ -274,35 +283,9 @@
 }
 
 .happyforms-styles .happyforms-part-option__description {
-  font-size: 12px;
-  color: #000;
-  color: var(--happyforms-color-primary);
-}
-
-/* tooltips */
-
-.happyforms-tooltip-ui {
-  border-color: var(--happyforms-color-part-border);
-}
-
-.happyforms-tooltip-ui .ui-tooltip-content {
-  line-height: 1.4;
-  font-size: 14px;
   font-size: var(--happyforms-part-description-font-size);
-  color: #454545;
+  color: #000;
   color: var(--happyforms-color-part-description);
-  background-color: #fff;
-  background-color: var(--happyforms-color-part-background);
-}
-
-.happyforms-tooltip-ui .ui-tooltip-content:after {
-  border-top-color: #fff;
-  border-top-color: var(--happyforms-color-part-background);
-}
-
-.happyforms-tooltip-ui--bottom .ui-tooltip-content:after {
-  border-bottom-color: #fff;
-  border-bottom-color: var(--happyforms-color-part-background);
 }
 
 /* parts - radio, checkbox */
@@ -315,6 +298,7 @@
   width: 21px;
   min-width: 21px;
   height: 21px;
+  margin: calc((var(--happyforms-part-value-font-size) * 1.3125 - 21px) / 2) 0;
   border-radius: 50%;
   border: 1px solid;
   border-color: #dbdbdb;
@@ -401,8 +385,11 @@
   border-top-color: var(--happyforms-color-dropdown-item-text);
 }
 
-.happyforms-styles .happyforms-part--select select:focus,
-.happyforms-styles .happyforms-part--date select:focus {
+.happyforms-styles .happyforms-part select.happyforms-select:invalid {
+  color: var(--happyforms-color-part-placeholder) !important;
+}
+
+.happyforms-styles .happyforms-part select.happyforms-select:focus {
   outline-width: 1px;
   outline-color: #000000;
   outline-color: var(--happyforms-color-part-value);
@@ -417,8 +404,8 @@
 
 /* submit button */
 
-.happyforms-styles input[type=submit].happyforms-button--submit,
-.happyforms-styles input[type=submit][disabled].happyforms-button--submit {
+.happyforms-styles button[type=submit].happyforms-button--submit,
+.happyforms-styles button[type=submit][disabled].happyforms-button--submit {
   -webkit-appearance: none;
   height: auto;
   padding: 15px 30px;
@@ -444,7 +431,7 @@
   overflow-wrap: anywhere;
 }
 
-.happyforms-styles input[type=submit]:not(:hover):not(:active):not(.has-background) {
+.happyforms-styles button[type=submit]:not(:hover):not(:active):not(.has-background) {
   background-color: #000;
   background-color: var(--happyforms-color-submit-background);
   background: #000;
@@ -453,8 +440,8 @@
   color: var(--happyforms-color-submit-text);
 }
 
-.happyforms-styles input[type=submit].happyforms-button--submit:hover,
-.happyforms-styles input[type=submit].happyforms-button--submit:focus {
+.happyforms-styles button[type=submit].happyforms-button--submit:hover,
+.happyforms-styles button[type=submit].happyforms-button--submit:focus {
   cursor: pointer;
   border-radius: 4px;
   border-color: transparent !important;
@@ -469,8 +456,8 @@
   color: var(--happyforms-color-submit-text-hover);
 }
 
-.happyforms-styles input[type=submit][disabled].happyforms-button--submit:hover,
-.happyforms-styles input[type=submit][disabled].happyforms-button--submit:focus {
+.happyforms-styles button[type=submit][disabled].happyforms-button--submit:hover,
+.happyforms-styles button[type=submit][disabled].happyforms-button--submit:focus {
   cursor: default;
   background-color: #407fff;
   background-color: var(--happyforms-color-submit-background);
@@ -492,38 +479,38 @@
 }
 
 /* notices */
-.happyforms-styles .happyforms-flex > .happyforms-message-notices .happyforms-message-notice {
+.happyforms-styles .happyforms-message-notices .happyforms-message-notice {
   padding: 20px 15px;
   border-radius: 6px;
   background-color: transparent;
   color: #454545;
 }
 
-.happyforms-styles.happyforms-form--part-border-radius-square .happyforms-flex > .happyforms-message-notices .happyforms-message-notice {
+.happyforms-styles.happyforms-form--part-border-radius-square .happyforms-message-notices .happyforms-message-notice {
   border-radius: 0;
 }
 
-.happyforms-styles.happyforms-form--part-border-radius-pill .happyforms-flex > .happyforms-message-notices .happyforms-message-notice {
+.happyforms-styles.happyforms-form--part-border-radius-pill .happyforms-message-notices .happyforms-message-notice {
   padding: 20px 25px;
   border-radius: 25px;
 }
 
-.happyforms-styles .happyforms-flex > .happyforms-message-notices .success {
+.happyforms-styles .happyforms-message-notices .success {
   background-color: #ebf9f0;
   background-color: var(--happyforms-color-success-notice);
 }
 
-.happyforms-styles .happyforms-flex > .happyforms-message-notices .success h2 {
+.happyforms-styles .happyforms-message-notices .success h2 {
   color: #1eb452 !important;
   color: var(--happyforms-color-success-notice-text) !important;
 }
 
-.happyforms-styles .happyforms-flex > .happyforms-message-notices .error {
+.happyforms-styles .happyforms-message-notices .error {
   background-color: #ffeeea;
   background-color: var(--happyforms-color-error-notice);
 }
 
-.happyforms-styles .happyforms-flex > .happyforms-message-notices .error h2 {
+.happyforms-styles .happyforms-message-notices .error h2 {
   color: #f23000 !important;
   color: var(--happyforms-color-error-notice-text) !important;
 }
@@ -704,37 +691,37 @@
 
 /* submit button */
 
-.happyforms-styles.happyforms-form--submit-button-border-hide input[type=submit].happyforms-button--submit {
+.happyforms-styles.happyforms-form--submit-button-border-hide button[type=submit].happyforms-button--submit {
   border-width: 0 !important;
 }
 
-.happyforms-styles.happyforms-form--submit-button-border-radius-square input[type=submit].happyforms-button--submit,
-.happyforms-styles.happyforms-form--submit-button-border-radius-square input[type=submit].happyforms-button--submit:hover {
+.happyforms-styles.happyforms-form--submit-button-border-radius-square button[type=submit].happyforms-button--submit,
+.happyforms-styles.happyforms-form--submit-button-border-radius-square button[type=submit].happyforms-button--submit:hover {
   border-radius: 0 !important;
 }
 
-.happyforms-styles.happyforms-form--submit-button-border-radius-pill input[type=submit].happyforms-button--submit,
-.happyforms-styles.happyforms-form--submit-button-border-radius-pill input[type=submit].happyforms-button--submit:hover {
+.happyforms-styles.happyforms-form--submit-button-border-radius-pill button[type=submit].happyforms-button--submit,
+.happyforms-styles.happyforms-form--submit-button-border-radius-pill button[type=submit].happyforms-button--submit:hover {
   border-radius: 60px !important;
 }
 
-.happyforms-styles.happyforms-form--submit-button-bold .happyforms-part--submit input[type=submit] {
+.happyforms-styles.happyforms-form--submit-button-bold .happyforms-part--submit button[type=submit] {
   font-weight: bold;
 }
 
-.happyforms-styles.happyforms-form--submit-button-disable-transitions input[type=submit] {
+.happyforms-styles.happyforms-form--submit-button-disable-transitions button[type=submit] {
   transition-duration: 0s !important;
 }
 
-.happyforms-styles.happyforms-form--submit-button-padding-narrow input[type=submit].happyforms-button--submit {
+.happyforms-styles.happyforms-form--submit-button-padding-narrow button[type=submit].happyforms-button--submit {
   padding: 10px 20px;
 }
 
-.happyforms-styles.happyforms-form--submit-button-padding-wide input[type=submit].happyforms-button--submit {
+.happyforms-styles.happyforms-form--submit-button-padding-wide button[type=submit].happyforms-button--submit {
   padding: 20px 50px;
 }
 
-.happyforms-styles.happyforms-form--submit-button-fullwidth input[type=submit].happyforms-button--submit {
+.happyforms-styles.happyforms-form--submit-button-fullwidth button[type=submit].happyforms-button--submit {
   padding-left: 0;
   padding-right: 0;
   margin-right: 0;
@@ -744,10 +731,6 @@
   font-weight: bold;
 }
 
-/* new dropdowns */
-.happyforms-styles .happyforms-part select {
-  display: none;
-}
 .happyforms-styles .happyforms-custom-select input[readonly="readonly"] {
   cursor: pointer;
 }
@@ -1029,19 +1012,6 @@
 .happyforms-styles.happyforms-form--part-border-radius-pill .happyforms-part--rich_text .mce-statusbar {
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
-}
-
-.happyforms-styles .happyforms-part--rich_text.happyforms-part--label-below.happyforms-part--has-tooltip .happyforms-visual-editor,
-.happyforms-styles .happyforms-part--rich_text.happyforms-part--label-left.happyforms-part--has-tooltip .happyforms-visual-editor {
-  margin-top: 35px;
-}
-
-.happyforms-styles .happyforms-part--rich_text.happyforms-part--label-hidden.happyforms-part--has-tooltip .happyforms-part__el {
-  margin-top: 35px;
-}
-
-.happyforms-styles .happyforms-part--rich_text.happyforms-part--label-hidden.happyforms-part--has-tooltip .happyforms-tooltip {
-  top: -30px;
 }
 
 .happyforms-styles.happyforms-form--part-border-off .happyforms-part--rich_text .happyforms-visual-editor {

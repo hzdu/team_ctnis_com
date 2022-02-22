@@ -154,6 +154,10 @@
 
 		var $li = $( e.currentTarget );
 
+		if ( 'undefined' !== typeof $li.attr( 'data-select-disabled' ) ) {
+			return;
+		}
+
 		if ( 'undefined' !== typeof $li.attr( 'data-value' ) ) {
 			this.setValue( $li.data('value').toString() );
 		}

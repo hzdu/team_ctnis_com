@@ -133,6 +133,7 @@
 
 		onItemLimitSubmissionsChange: function( e ) {
 			var isChecked = $( e.target ).is( ':checked' );
+			var model = this.part;
 
 			if ( ! isChecked ) {
 				this.model.set( 'show_submissions_amount', 0 );
@@ -141,6 +142,16 @@
 
 			this.model.set( 'limit_submissions', isChecked ? 1 : 0 );
 			$( '.happyforms-part-item-limit-submission-settings', this.$el ).toggle();
+
+			this.part.fetchHtml( function( response ) {
+				var data = {
+					id: model.get( 'id' ),
+					html: response,
+				};
+
+				happyForms.previewSend( 'happyforms-form-part-refresh', data );
+
+			} );
 		},
 
 		onItemLimitSubmissionsAmountChange: function( e ) {
@@ -174,7 +185,7 @@
 
 			var model = this.part;
 
-			if ( 1 != this.model.get('show_submissions_amount') ) {
+			if ( 1 != this.model.get('limit_submissions') ) {
 				return;
 			}
 
@@ -566,8 +577,7 @@
 		onSelectPlaceholderChangeCallback: function( id, html, options, $ ) {
 			var $part = this.getPartElement( html );
 
-			$( 'input', $part ).attr( 'placeholder', options.label );
-			$( '.happyforms-custom-select-dropdown__placeholder', $part ).removeClass('preview-hidden').text( options.label );
+			$( 'select option.happyforms-placeholder-option', $part ).text( options.label );
 		},
 
 		onSelectOtherOptionLabelChangeCallback: function( id, html, options ) {

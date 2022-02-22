@@ -103,15 +103,28 @@
 			this.model.set( 'description', $( e.target ).val() );
 			this.part.trigger( 'change' );
 
-			var data = {
-				id: this.part.get( 'id' ),
-				callback: 'onRadioItemDescriptionChangeCallback',
-				options: {
-					itemID: this.model.get( 'id' ),
-				}
-			};
+			if ( '' == this.model.previousAttributes().description || '' ==  this.model.get( 'description' ) ) {
+				var self = this;
+				this.part.fetchHtml( function( response ) {
+					var data = {
+						id: self.part.get( 'id' ),
+						html: response,
+					};
 
-			happyForms.previewSend( 'happyforms-part-dom-update', data );
+					happyForms.previewSend( 'happyforms-form-part-refresh', data );
+				} );
+			} else {
+				var data = {
+					id: this.part.get( 'id' ),
+					callback: 'onRadioItemDescriptionChangeCallback',
+					options: {
+						itemID: this.model.get( 'id' ),
+					}
+				};
+
+				happyForms.previewSend( 'happyforms-part-dom-update', data );
+
+			}
 		},
 
 		onItemDefaultChange: function( e ) {
@@ -141,6 +154,7 @@
 
 		onItemLimitSubmissionsChange: function( e ) {
 			var isChecked = $( e.target ).is( ':checked' );
+			var model = this.part;
 
 			if ( ! isChecked ) {
 				this.model.set( 'show_submissions_amount', 0 );
@@ -149,6 +163,16 @@
 
 			this.model.set( 'limit_submissions', isChecked ? 1 : 0 );
 			$( '.happyforms-part-item-limit-submission-settings', this.$el ).toggle();
+
+			this.part.fetchHtml( function( response ) {
+				var data = {
+					id: model.get( 'id' ),
+					html: response,
+				};
+
+				happyForms.previewSend( 'happyforms-form-part-refresh', data );
+
+			} );
 		},
 
 		onChangeShowSubmissions: function( e ) {
@@ -170,7 +194,7 @@
 
 			var model = this.part;
 
-			if ( 1 != this.model.get('show_submissions_amount') ) {
+			if ( 1 != this.model.get('limit_submissions') ) {
 				return;
 			}
 
@@ -207,7 +231,7 @@
 			'click .import-option': 'onImportOptionClick',
 			'click .import-options': 'onImportOptionsClick',
 			'click .add-options': 'onAddOptionsClick',
-			'change [name=display_type]': 'onDisplayTypeChange',
+			'change [data-bind=display_type]': 'onDisplayTypeChange',
 			'keyup [name=label]': 'onEnterKey',
 			'keyup [name=description]': 'onEnterKey',
 		} ),
@@ -380,13 +404,6 @@
 			var value = $input.val();
 
 			this.model.set( attribute, value );
-
-			$( '.part-options-width-setting select option', this.$el ).hide();
-
-			var $supportedOptions = $( '.part-options-width-setting select option.display-type--' + value, this.$el );
-			$supportedOptions.show();
-
-			$( '.part-options-width-setting select' ).val( 'auto' ).trigger( 'change' );
 
 			var data = {
 				id: this.model.get( 'id' ),

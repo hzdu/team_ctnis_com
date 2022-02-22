@@ -3,7 +3,7 @@
 	var FormBuild = happyForms.classes.views.FormBuild;
 	var FormStyle = happyForms.classes.views.FormStyle;
 	var Previewer = happyForms.previewer;
-	
+
 	var HappyFormsProgressBar = function() {
 		this.totalSteps = 0;
 	}
@@ -18,9 +18,9 @@
 		var pageBreaks = happyForms.form.get( 'parts' ).where( { type: 'page_break' } ).length;
 
 		if ( 1 < this.totalSteps && this.totalSteps === pageBreaks ) {
-			happyForms.utils.fetchPartialHtml( 'form-progress-bar', function( response ) {
+			happyForms.utils.fetchPartialHtml( 'form-steps-progress', function( response ) {
 				var data = {
-					selector: '[data-partial-id=form-progress-bar]',
+					selector: '[data-partial-id=form-steps-progress]',
 					options: {
 						after: '[data-partial-id="title"]'
 					},
@@ -46,7 +46,7 @@
 
 	HappyFormsProgressBar.prototype.unload = function() {
 		var data = {
-			partial: 'form-progress-bar'
+			partial: 'form-steps-progress'
 		};
 
 		happyForms.previewSend( 'happyforms-form-partial-remove', data );
@@ -67,7 +67,7 @@
 			if ( 'page_break' !== type ) {
 				return;
 			}
-			
+
 			var form = happyForms.form;
 			var parts = happyForms.form.get( 'parts' );
 			var $firstPart = $( '.happyforms-form-widgets .happyforms-widget:first-child', this.$el );
@@ -87,7 +87,7 @@
 
 				partModel.set( 'is_first', true );
 				partModel.set( 'label', progressBarSettings.i18n.first_label );
-				
+
 				form.get( 'parts' ).add( partModel, options );
 				form.trigger( 'change', partModel );
 
@@ -114,7 +114,7 @@
 			FormStyle.prototype.applyConditionClasses.apply( this, arguments );
 
 			var hasProgressBar = false;
-			
+
 			if ( happyForms.form.get( 'parts' ).where( { type: 'page_break' } ).length >= 2 ) {
 				hasProgressBar = true;
 			}

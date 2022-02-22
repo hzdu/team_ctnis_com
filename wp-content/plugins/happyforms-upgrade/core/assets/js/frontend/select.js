@@ -5,20 +5,10 @@
 	HappyForms.parts.select = {
 		init: function( options ) {
 			this.type = this.$el.data( 'happyforms-type' );
-
 			this.$input = $( '[data-serialize]', this.$el );
-			var $visualInput = $( 'input[type="text"]:not(.happyforms-select-dropdown-other)', this.$el );
-			var $select = $( '.happyforms-custom-select-dropdown', this.$el );
 
-			$visualInput.happyFormsSelect( {
-				$input: this.$input,
-				$select: $select,
-				searchable: $visualInput.attr( 'data-searchable' ),
-				required: 'undefined' === typeof this.$el.data( 'happyforms-required' ) ? false : true,
-			});
-
-			this.$input.on( 'blur', this.onBlur.bind(this) );
-			this.initTooltip();
+			this.$input.on( 'change', this.triggerChange.bind( this ) );
+			this.$input.on( 'blur', this.onBlur.bind( this ) );
 		},
 
 		onBlur: function() {
@@ -34,23 +24,29 @@
 		serialize: function() {
 			var self = this;
 
-			var serialized = this.$input.map( function( i, input ) {
-				var $input = $( input, self.$el );
+			var serialized = this.$input.map( function( i, select ) {
+				var $select = $( select, self.$el );
 				var $customInput = 0;
 
-				if ( 999 == $input.val() ) {
+				if ( 999 == $select.val() ) {
 					$customInput = $( ' .happyforms-part-option--other input[type=text]', self.$el );
 				}
 
+				var value = $select.val();
+
+				if ( null == value ) {
+					value = '';
+				}
+
 				var keyValue = {
-					name: $input.attr( 'name' ),
-					value: $input.val()
+					name: $select.attr( 'name' ),
+					value: value
 				};
 
 				if ( $customInput.length ) {
 					var otherValue = $customInput.val();
 
-					keyValue['value'] = [ $input.val(), otherValue ];
+					keyValue['value'] = [ $select.val(), otherValue ];
 
 					keyValue['value'] = JSON.stringify( keyValue['value'] );
 				}

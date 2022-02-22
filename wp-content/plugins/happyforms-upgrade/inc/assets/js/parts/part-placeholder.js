@@ -74,20 +74,6 @@
 			}.bind( this ) );
 		},
 
-		onAddMediaClick: function( e ) {
-			e.preventDefault();
-			e.stopPropagation();
-
-			var editor              = tinymce.get( this.editorId );
-			var editorMediaSettings = this.editorSettings.hfmedia;
-
-			happyForms.utils.setMediaFilters( editorMediaSettings.filters );
-
-			happyforms.iodia = new wp.media.view.MediaFrame.Select();
-			happyforms.iodia.open();
-			happyforms.iodia.on( 'close', happyForms.utils.onAttachmentSelected.bind( this, editor, editorMediaSettings.supports ) );
-		},
-
 		/**
 		 * Add a special treatment for removing WP editor when the part is removed.
 		 *
