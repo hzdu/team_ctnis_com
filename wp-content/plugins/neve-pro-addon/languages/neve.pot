@@ -135,36 +135,36 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: includes/admin/custom_layouts_cpt.php:87
+#: includes/admin/custom_layouts_cpt.php:89
 msgctxt "advanced-hooks general name"
 msgid "Custom Layouts"
 msgstr ""
 
-#: includes/admin/custom_layouts_cpt.php:88
+#: includes/admin/custom_layouts_cpt.php:90
 msgctxt "advanced-hooks singular name"
 msgid "Custom Layout"
 msgstr ""
 
-#: includes/admin/custom_layouts_cpt.php:89
+#: includes/admin/custom_layouts_cpt.php:91
 msgid "Search Custom Layouts"
 msgstr ""
 
-#: includes/admin/custom_layouts_cpt.php:90
+#: includes/admin/custom_layouts_cpt.php:92
 #: includes/modules/custom_layouts/module.php:42
 #: includes/modules/header_footer_grid/templates/component-custom-layout.php:22
 msgid "Custom Layouts"
 msgstr ""
 
-#: includes/admin/custom_layouts_cpt.php:91
+#: includes/admin/custom_layouts_cpt.php:93
 msgid "Edit Custom Layout"
 msgstr ""
 
-#: includes/admin/custom_layouts_cpt.php:92
+#: includes/admin/custom_layouts_cpt.php:94
 msgid "View Custom Layout"
 msgstr ""
 
-#: includes/admin/custom_layouts_cpt.php:93
 #: includes/admin/custom_layouts_cpt.php:95
+#: includes/admin/custom_layouts_cpt.php:97
 #: includes/modules/woocommerce_booster/cart_notices/cart_notices.php:134
 #: includes/modules/woocommerce_booster/cart_notices/cart_notices.php:136
 #: includes/modules/woocommerce_booster/tab_manager/product_tabs_cpt.php:69
@@ -172,11 +172,11 @@ msgstr ""
 msgid "Add New"
 msgstr ""
 
-#: includes/admin/custom_layouts_cpt.php:94
+#: includes/admin/custom_layouts_cpt.php:96
 msgid "Update Custom Layout"
 msgstr ""
 
-#: includes/admin/custom_layouts_cpt.php:96
+#: includes/admin/custom_layouts_cpt.php:98
 msgid "New Custom Layout Name"
 msgstr ""
 
@@ -897,144 +897,144 @@ msgstr ""
 msgid "Time to read meta"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:121
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:123
 msgid "Individual"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:122
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:124
 #: includes/modules/header_footer_grid/module.php:519
 #: includes/customizer/controls/react/src/conditional/ConditionalHeader.js:78
 msgid "Header"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:123
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:125
 msgid "Inside content"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:124
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:126
 msgid "Footer"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:125
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:419
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:127
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:424
 msgid "Hooks"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:126
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:128
 msgid "404 Page"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:130
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:132
 msgid "Offline Page"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:131
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:133
 msgid "Internal Server Error Page"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:162
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:164
 msgid "Custom Layout Settings"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:397
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:402
 #: includes/modules/woocommerce_booster/customizer/cart_page.php:103
 #: includes/modules/woocommerce_booster/customizer/shop_page.php:396
 #: includes/modules/woocommerce_booster/customizer/shop_page.php:608
 msgid "Layout"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:401
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:684
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:769
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:406
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:686
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:771
 #: includes/customizer/controls/react/src/conditional/Select.js:129
 msgid "Select"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:423
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:428
 msgid "Select a hook"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:424
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:429
 #: includes/modules/elementor_booster/extensions/particle_section.php:81
 #: includes/modules/elementor_booster/widgets/banner.php:230
 msgid "Custom"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:446
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:451
 msgid "Custom hook name"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:459
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:461
 msgid "Priority"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:469
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:471
 msgid "Enable expiration date"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:480
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:482
 msgid "Date and time"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:496
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:498
 msgid "After certain number of headings"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:497
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:499
 msgid "After certain number of blocks"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:502
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:504
 #: includes/modules/elementor_booster/widgets/content_switcher.php:151
 msgid "Display"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:521
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:523
 #: includes/modules/lifterlms_booster/customizer/course_membership.php:153
 #: includes/modules/lifterlms_booster/customizer/course_membership.php:282
 #: includes/modules/woocommerce_booster/customizer/shop_page.php:342
 msgid "Number"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:548
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:550
 msgid "Available shortcode:"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:597
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:599
 msgid "Conditional Logic"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:601
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:603
 msgid "If no conditional logic is selected, the Custom Layout will be applied site-wide."
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:623
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:625
 #: includes/customizer/controls/react/src/conditional/RuleGroup.js:61
 msgid "Add Rule Group"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:700
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:702
 msgid "is equal to"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:703
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:705
 msgid "is not equal to"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:721
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:723
 msgid "AND"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:726
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:728
 #: includes/customizer/controls/react/src/conditional/RuleGroup.js:71
 msgid "Remove Rule Group"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:729
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:731
 msgid "OR"
 msgstr ""
 
-#: includes/modules/custom_layouts/admin/layouts_metabox.php:744
+#: includes/modules/custom_layouts/admin/layouts_metabox.php:746
 #: includes/modules/custom_layouts/module.php:336
 msgid "You can add the following tags in your template:"
 msgstr ""
@@ -4460,34 +4460,42 @@ msgstr ""
 msgid "WooCommerce"
 msgstr ""
 
-#: includes/modules/woocommerce_booster/custom_thank_you/main.php:206
+#: includes/modules/woocommerce_booster/custom_thank_you/admin_product.php:71
+msgid "Thank you Page"
+msgstr ""
+
+#: includes/modules/woocommerce_booster/custom_thank_you/main.php:212
 msgid "In order to see the order details, please add the order ID in the input above."
 msgstr ""
 
-#: includes/modules/woocommerce_booster/custom_thank_you/main.php:365
+#: includes/modules/woocommerce_booster/custom_thank_you/main.php:371
 msgctxt "Post type general name"
 msgid "Thank You Pages"
 msgstr ""
 
-#: includes/modules/woocommerce_booster/custom_thank_you/main.php:366
+#: includes/modules/woocommerce_booster/custom_thank_you/main.php:372
 msgctxt "Post type general name"
 msgid "Thank You Page"
 msgstr ""
 
-#: includes/modules/woocommerce_booster/custom_thank_you/main.php:367
+#: includes/modules/woocommerce_booster/custom_thank_you/main.php:373
 msgid "Thank You Pages"
 msgstr ""
 
-#: includes/modules/woocommerce_booster/custom_thank_you/main.php:368
+#: includes/modules/woocommerce_booster/custom_thank_you/main.php:374
 msgid "Add New Thank You Page"
 msgstr ""
 
-#: includes/modules/woocommerce_booster/custom_thank_you/main.php:369
+#: includes/modules/woocommerce_booster/custom_thank_you/main.php:375
 msgid "Edit Thank You Page"
 msgstr ""
 
 #: includes/modules/woocommerce_booster/custom_thank_you/templates/product_category.php:17
 msgid "Custom Thank You Page"
+msgstr ""
+
+#: includes/modules/woocommerce_booster/custom_thank_you/templates/product_tab.php:19
+msgid "Choose thank you page"
 msgstr ""
 
 #: includes/modules/woocommerce_booster/module.php:64

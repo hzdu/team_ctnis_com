@@ -1,3 +1,12 @@
+##### [Version 2.1.6](https://github.com/Codeinwp/neve-pro-addon/compare/v2.1.5...v2.1.6) (2022-02-23)
+
+- [Feat] Product-based restriction added to a custom thank you page
+- [Fix] Updated method visibility to improve php8.1 compatibility
+- [Fix] Priority field of the custom layout wasn't working with other functions hooked there
+- [Fix] Add a smooth transition for the non-sticky header
+- [Fix] Console error in Customizer environment
+- [Fix] Product sliders of Essential Addons for Elementor
+
 ##### [Version 2.1.5](https://github.com/Codeinwp/neve-pro-addon/compare/v2.1.4...v2.1.5) (2022-02-07)
 
 - [Feat] Added more icons to scroll to top

@@ -57,16 +57,21 @@
   width: 100%;
   z-index: 99999; }
   .hfg_header .header--row {
-    max-height: 700px; }
+    height: auto;
+    transition: height 0.2s ease-out;
+    -webkit-transition: height 0.2s ease-out; }
   .hfg_header .header--row.is_sticky_on_scroll {
-    max-height: 0;
+    height: 0;
     overflow: hidden; }
   .hfg_header.is-stuck.has-sticky-rows--mobile .header--row:not(.is_sticky) {
     overflow: hidden;
-    max-height: 0; }
+    height: 0; }
   .hfg_header.is-stuck.has-sticky-rows--mobile .is_sticky_on_scroll {
-    max-height: 700px;
     overflow: visible; }
+
+.sticky-header-placeholder {
+  transition: height 0.2s ease-out 2ms;
+  -webkit-transition: height 0.2s ease-out 2ms; }
 
 .hfg_header.has-sticky-rows--mobile {
   position: fixed; }
@@ -199,9 +204,8 @@
       max-height: initial; }
   .is-stuck.has-sticky-rows--desktop .header--row:not(.is_sticky) {
     overflow: hidden;
-    max-height: 0; }
+    height: 0; }
   .is-stuck.has-sticky-rows--desktop .is_sticky_on_scroll {
-    max-height: 700px;
     overflow: visible; }
   .header .neve-transparent-header.has-sticky-rows--desktop:not(.is-stuck) .header--row, .header .neve-transparent-header:not(.has-sticky-rows--desktop) .header--row {
     --bgColor: transparent;

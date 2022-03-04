@@ -70,18 +70,18 @@
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); } }
 
-.woocommerce ul.products:not(.tns-slider) {
+.woocommerce .nv-shop ul.products:not(.tns-slider) {
   display: grid;
   grid-template-columns: repeat(var(--shopColTemplate), 1fr);
   grid-gap: 40px 30px;
   margin-bottom: 60px; }
-  .woocommerce ul.products:not(.tns-slider):before {
+  .woocommerce .nv-shop ul.products:not(.tns-slider):before {
     content: none; }
-  .woocommerce ul.products:not(.tns-slider) li.product {
+  .woocommerce .nv-shop ul.products:not(.tns-slider) li.product {
     margin: 0;
     float: none;
     width: 100% !important; }
-    .woocommerce ul.products:not(.tns-slider) li.product > a, .woocommerce ul.products:not(.tns-slider) li.product img {
+    .woocommerce .nv-shop ul.products:not(.tns-slider) li.product > a, .woocommerce .nv-shop ul.products:not(.tns-slider) li.product img {
       width: 100%; }
 
 .nv-list li.product {
