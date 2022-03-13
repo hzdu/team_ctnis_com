@@ -1,3 +1,8 @@
+@12 March 2022 v3.55.4
+Fix: Facebook updatd to cope with new changes
+NEW: Amazon new tag [item_details]
+NEW: eBay affiliate reference ID support 
+
 @11 Febrary 2022 v3.55.3
 Fix: Google translation back to work normally
 NEW: Careerjet now imports the logo image 
@@ -11,7 +16,6 @@ NEW: Option to set the slug to original post slug
 @28 January 2022 v3.55.1
 Fix: UI updated to work with WordPress 5.9
 Fix: amazon last time price updated tag now returns correct date
-
 
 @19 January 2022 v3.55.0
 Fix: eBay module rewritten to use the new eBay Browse API
